@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Fast, customizable new tab with video wallpapers"><meta name="color-scheme" content="dark light"><meta name="theme-color" content="#0b0e14"><title>New Tab</title>
+<link rel="stylesheet" href="styles.css"></head>
+<body>
+<div id="bg"></div>
+<main id="ui">
+ <div id="gr" data-w="gr"></div>
+ <div id="clock" data-w="clock"><span id="t"></span><span id="ap"></span><svg id="an" viewBox="-50 -50 100 100" aria-hidden="true"><circle r="48" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/><g id="tk"></g><line id="hh" y2="-26" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><line id="hm" y2="-38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line id="hs" y2="-42" stroke="var(--ac)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+ <div id="d" data-w="d"></div>
+ <form id="sf" data-w="sf" autocomplete="off"><input id="q" type="text" placeholder="Search or type a URL" aria-label="Search"></form>
+ <nav id="lk" data-w="lk" aria-label="Shortcuts"></nav>
+<section id="nw" class="wg" data-w="nw" hidden><textarea id="nta" placeholder="Quick notes" aria-label="Notes"></textarea></section>
+ <section id="tw" class="wg" data-w="tw" hidden><div id="tl"></div><input id="ti" type="text" placeholder="Add a task, press Enter" aria-label="Add task"></section>
+</main>
+<style id="cc"></style>
+<div id="toast" role="status" aria-live="polite"></div>
+<button id="done" hidden>Done · drag to move · ■ resize · ● rotate</button>
+<div id="cd" data-w="cd" hidden></div><div id="qt" data-w="qt" hidden></div>
+<section id="wx" class="wg" data-w="wx" hidden></section>
+<section id="pm" class="wg" data-w="pm" hidden><div id="pt">25:00</div><div class="pr"><button class="btn" id="pg">Start</button><button class="btn" data-pm="25">Focus</button><button class="btn" data-pm="5">Break</button></div></section>
+<section id="cal" class="wg" data-w="cal" hidden></section>
+<section id="bm" class="wg" data-w="bm" hidden><div class="bt" id="bmt"></div><div id="bmg"></div></section>
+<div id="lib" class="win" hidden role="dialog" aria-label="Wallpaper library"><div id="lh"><b id="lt">Wallpaper library</b><button class="btn" id="lc" aria-label="Close">✕</button></div><div class="ch" id="lf"></div><div id="lg"></div></div>
+<button id="gear" aria-label="Customize">⚙</button>
+<aside id="pn" aria-label="Settings">
+ <h2>Customize <button class="btn" id="x">Close</button></h2>
+ <input id="ps" type="text" placeholder="Search settings…" aria-label="Search settings">
+ <div class="tabs" role="tablist"><button class="on" data-p="p1">Wallpapers</button><button data-p="p2">Widgets</button><button data-p="p3">Settings</button></div>
+ <section class="pg on" id="p1">
+  <button class="btn big pri" id="up">Upload your own (video / image / GIF)</button><input id="f" type="file" accept="image/*,video/*" multiple hidden>
+  <button class="btn big" id="lo">Choose from library</button>
+  <h3>My uploads</h3><div class="ch" id="bgs"></div>
+  <div class="pr"><button class="btn" id="dflt">Restore default</button><button class="btn" id="dall">Delete all uploads</button></div>
+  
+  <h3>Adjust</h3>
+  <div class="r">Dim<input type="range" data-k="dim" min="0" max=".85" step=".01"></div>
+  <div class="r">Brightness<input type="range" data-k="br" min=".3" max="1.5" step=".05"></div>
+  <div class="r">Saturation<input type="range" data-k="sa" min="0" max="2" step=".05"></div>
+  <div class="r">Blur<input type="range" data-k="wb" min="0" max="20" step="1"></div>
+  <div class="r">Fit<select data-k="fit"><option value="cover">Fill</option><option value="contain">Fit</option></select></div>
+  <div class="r">Focus X<input type="range" data-k="ox" min="0" max="100" step="1"></div>
+  <div class="r">Focus Y<input type="range" data-k="oy" min="0" max="100" step="1"></div>
+  <div class="r">Vignette<input type="range" data-k="vg" min="0" max=".9" step=".05"></div>
+  <div class="r">Tint color<input type="color" data-k="tint"></div>
+  <div class="r">Slow zoom (images)<input type="checkbox" data-k="kb"></div>
+  <div class="r">Mouse parallax<input type="checkbox" data-k="px"></div>
+  <div class="r">Video speed<input type="range" data-k="vs" min=".25" max="2" step=".25"></div>
+  <div class="r">Video sound<input type="checkbox" data-k="snd"></div>
+  <h3>Auto change</h3>
+  <div class="r">Slideshow<select data-k="ss"><option value="off">Off</option><option value="tab">Each new tab</option><option value="5">Every 5 min</option><option value="15">Every 15 min</option><option value="60">Every hour</option></select></div>
+  <div class="r">Auto day / night wallpaper<input type="checkbox" data-k="dn"></div>
+  <div class="r">Day starts at<input type="number" data-k="dh" min="0" max="23" style="width:64px"></div>
+  <div class="r">Night starts at<input type="number" data-k="nh" min="0" max="23" style="width:64px"></div>
+  <div id="dnbox" class="dn"></div><p class="note" id="dns"></p>
+  
+ </section>
+ <section class="pg" id="p2">
+  <h3>Layout</h3>
+  <div class="pr"><button class="btn" data-pre="min">Minimal</button><button class="btn" data-pre="bal">Balanced</button><button class="btn" data-pre="full">Full</button></div>
+  <div class="pr" style="margin-top:8px"><button class="btn" id="ed">Move &amp; resize</button><button class="btn" id="rl">Reset positions</button></div>
+  <h3>Show</h3>
+  <div class="r">Clock<input type="checkbox" data-k="sClock"></div>
+  <div class="r">Date<input type="checkbox" data-k="sDate"></div>
+  <div class="r">Greeting<input type="checkbox" data-k="sGreet"></div>
+  <div class="r">Search bar<input type="checkbox" data-k="sSearch"></div>
+  <div class="r">Shortcuts<input type="checkbox" data-k="sLinks"></div>
+  <div class="r">Notes<input type="checkbox" data-k="sNotes"></div>
+  <div class="r">To-do list<input type="checkbox" data-k="sTodo"></div>
+  <div class="r">Weather<input type="checkbox" data-k="sWx"></div>
+  <div class="r">Focus timer<input type="checkbox" data-k="sPm"></div>
+  <div class="r">Calendar<input type="checkbox" data-k="sCal"></div>
+  <div class="r">Countdown<input type="checkbox" data-k="sCd"></div>
+  <div class="r">Daily quote<input type="checkbox" data-k="sQt"></div>
+  <div class="r">Bookmarks<input type="checkbox" data-k="sBm"></div>
+  <h3>Audio players</h3>
+  <p class="note">Shows what's playing in your other tabs (extension). The preview uses a demo track.</p>
+  <div id="awl"></div><button class="btn big" id="awa">+ Add audio widget</button>
+  <h3>Visualizer bars</h3>
+  <div class="r">Source<select data-k="vm"><option value="tab">Tab audio (real sound)</option><option value="live">Share audio (any tab or screen)</option><option value="sim">Demo animation</option></select></div>
+  <p class="note" id="vst"></p>
+  <div id="vzl"></div><button class="btn big" id="vza">+ Add visualizer bars</button>
+  <h3>Bookmarks</h3>
+  <div class="r">Folder<select id="bmf"></select></div>
+  <div class="r">Layout<select data-k="bml"><option value="grid">Grid</option><option value="dock">Dock</option><option value="list">List</option></select></div>
+  <div class="r">Icon size<input type="range" data-k="bms" min="36" max="96" step="2"></div>
+  <div class="r">Width<input type="range" data-k="bmw" min="280" max="900" step="10"></div>
+  <div class="r">Show names<input type="checkbox" data-k="bmn"></div>
+  <div class="r">Folder tabs<input type="checkbox" data-k="bmt"></div>
+  <h3>Arrange</h3>
+  <div class="r">Vertical align<select data-k="va"><option value="start">Top</option><option value="center">Center</option><option value="end">Bottom</option></select></div>
+  <div class="r">Spacing<input type="range" data-k="gap" min="0" max="48" step="2"></div>
+  <div class="r">Snap to grid<input type="checkbox" data-k="snap"></div>
+  <div class="r">Zen mode (press Z)<input type="checkbox" data-k="zen"></div>
+  <h3>Clock</h3>
+  <div class="r">Your name<input type="text" data-k="name" placeholder="optional"></div>
+  <div class="r">Size<input type="range" data-k="cs" min="40" max="220" step="2"></div>
+  <div class="r">Weight<input type="range" data-k="clw" min="100" max="900" step="100"></div>
+  <div class="r">Letter spacing<input type="range" data-k="cls" min="-.08" max=".2" step=".01"></div>
+  <div class="r">Style<select data-k="cst"><option value="analog">Analog</option><option value="w6">Regular</option><option value="thin">Thin</option><option value="bold">Bold</option><option value="mono">Mono</option></select></div>
+  <div class="r">24-hour<input type="checkbox" data-k="h24"></div>
+  <div class="r">Show seconds<input type="checkbox" data-k="sec"></div>
+  <h3>Weather &amp; countdown</h3>
+  <div class="r">City<input type="text" data-k="city" placeholder="Delhi"></div>
+  <div class="r">Unit<select data-k="unit"><option value="C">°C</option><option value="F">°F</option></select></div>
+  <div class="r">Event<input type="text" data-k="cdn" placeholder="Exam"></div>
+  <div class="r">Date<input type="date" data-k="cdd"></div>
+  <h3>Shortcuts</h3>
+  <div class="r">Open animation<select data-k="ld"><option value="grow">Grow from tile + logo</option><option value="fade">Fade + logo</option><option value="off">Off</option></select></div>
+  <div class="r">Animation length<input type="range" data-k="ldd" min="1" max="5" step=".5"></div>
+  <div class="r">Tile size<input type="range" data-k="tile" min="56" max="140" step="2"></div>
+  <div class="r">Show names<input type="checkbox" data-k="lbl"></div><div id="ll"></div>
+  <div class="lr"><input type="text" id="ln" placeholder="Name" size="8"><input type="text" id="lu" placeholder="site.com" style="flex:1"><button class="btn" id="la">Add</button></div>
+ </section>
+ <section class="pg" id="p3">
+  <h3>Scenes</h3>
+  <div id="sl"></div><div class="lr"><input type="text" id="sn" placeholder="Scene name" style="flex:1"><button class="btn" id="sv">Save current</button></div>
+  <h3>Look</h3><div class="ch" id="thm"></div>
+  <div class="r">Glass style<select data-k="gs"><option value="frost">Frosted</option><option value="gloss">Glossy</option><option value="clear">Clear</option><option value="oled">OLED black</option></select></div>
+  <div class="r">Glass opacity<input type="range" data-k="go" min="0" max=".4" step=".01"></div>
+  <div class="r">Lite mode (no blur, still video)<input type="checkbox" data-k="lite"></div>
+  <div class="r">Corner radius<input type="range" data-k="rad" min="0" max="32" step="1"></div>
+  <div class="r">Text color<input type="color" data-k="tc"></div>
+  <div class="r">Text shadow<input type="range" data-k="sh" min="0" max="1" step=".05"></div>
+  <div class="r">Accent<input type="color" data-k="ac"></div>
+  <div class="r">Font<select data-k="font"><option value="sans">Clean</option><option value="serif">Serif</option><option value="mono">Mono</option><option value="round">Rounded</option></select></div>
+  <div class="r">Glass blur<input type="range" data-k="blur" min="0" max="30" step="1"></div>
+  <div class="r">Panel theme<select id="th"><option value="">System</option><option value="dark">Dark</option><option value="light">Light</option></select></div>
+  <h3>Search &amp; text</h3>
+  <div class="r">Search width<input type="range" data-k="cw" min="280" max="900" step="10"></div>
+  <div class="r">Search hint<input type="text" data-k="ph"></div>
+  <div class="r">Focus search on open<input type="checkbox" data-k="af"></div>
+  <div class="r">Greeting text<input type="text" data-k="greet" placeholder="Auto"></div>
+  <div class="r">Date format<select data-k="df"><option value="long">Tuesday, October 13</option><option value="short">Tue, Oct 13</option><option value="num">13/10/2026</option><option value="day">Weekday only</option></select></div>
+  <div class="r">Search engine<select data-k="eng"><option value="https://duckduckgo.com/?q=">DuckDuckGo</option><option value="https://search.brave.com/search?q=">Brave</option><option value="https://www.google.com/search?q=">Google</option><option value="https://www.bing.com/search?q=">Bing</option></select></div>
+  <h3>Custom CSS</h3>
+  <textarea data-k="css" spellcheck="false" placeholder="#clock{font-weight:200}"></textarea>
+  <h3>Backup</h3><div class="pr"><button class="btn" id="ex">Export</button><button class="btn" id="im">Import</button></div><input id="imf" type="file" accept=".json" hidden>
+  <h3>Reset</h3><button class="btn" id="rs">Reset all settings</button>
+ </section>
+<p class="hint">v2.7 · Ctrl+K commands · / search · Esc close</p></aside>
+<script src="app.js"></script>
+</body></html>

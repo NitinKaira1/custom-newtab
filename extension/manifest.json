@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Custom New Tab",
+  "version": "2.7.0",
+  "description": "Fast, customizable new tab with video wallpapers, widgets and scenes.",
+  "minimum_chrome_version": "102",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": [
+    "favicon",
+    "tabs",
+    "scripting",
+    "bookmarks"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "_favicon/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "extension_ids": [
+        "*"
+      ]
+    }
+  ]
+}
