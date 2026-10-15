@@ -35,6 +35,9 @@
   <div class="pr"><button class="btn" id="dflt">Restore default</button><button class="btn" id="dall">Delete all uploads</button></div>
   
   <h3>Adjust</h3>
+  <div class="r">Save per wallpaper<input type="checkbox" data-k="pw"></div>
+  <p class="note" id="wpn"></p>
+  <div class="pr"><button class="btn" id="wpr">Reset this wallpaper</button><button class="btn" id="wpa">Use for all</button></div>
   <div class="r">Dim<input type="range" data-k="dim" min="0" max=".85" step=".01"></div>
   <div class="r">Brightness<input type="range" data-k="br" min=".3" max="1.5" step=".05"></div>
   <div class="r">Saturation<input type="range" data-k="sa" min="0" max="2" step=".05"></div>
@@ -50,6 +53,8 @@
   <div class="r">Video sound<input type="checkbox" data-k="snd"></div>
   <h3>Auto change</h3>
   <div class="r">Slideshow<select data-k="ss"><option value="off">Off</option><option value="tab">Each new tab</option><option value="5">Every 5 min</option><option value="15">Every 15 min</option><option value="60">Every hour</option></select></div>
+  <div class="r">Slideshow order<select data-k="sso"><option value="shuf">Shuffle</option><option value="seq">In order</option></select></div>
+  <div class="r">Slideshow wallpapers<button class="btn" id="sslb">All wallpapers</button></div>
   <div class="r">Auto day / night wallpaper<input type="checkbox" data-k="dn"></div>
   <div class="r">Day starts at<input type="number" data-k="dh" min="0" max="23" style="width:64px"></div>
   <div class="r">Night starts at<input type="number" data-k="nh" min="0" max="23" style="width:64px"></div>
@@ -139,6 +144,6 @@
   <h3>Backup</h3><div class="pr"><button class="btn" id="ex">Export</button><button class="btn" id="im">Import</button></div><input id="imf" type="file" accept=".json" hidden>
   <h3>Reset</h3><button class="btn" id="rs">Reset all settings</button>
  </section>
-<p class="hint">v2.7 · Ctrl+K commands · / search · Esc close</p></aside>
+<p class="hint">v2.8 · Ctrl+K commands · / search · Esc close</p></aside>
 <script src="app.js"></script>
 </body></html>

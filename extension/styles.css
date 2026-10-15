@@ -185,3 +185,5 @@ body #bm[data-l=dock]{background:none!important;border:0!important;box-shadow:no
 #ld .pg:after{content:"";position:absolute;inset:0;background:var(--ac);translate:-100%;animation:ldp var(--ldd,2.5s) linear forwards}@keyframes ldp{to{translate:0}}
 @keyframes ldb{from{translate:-100%}to{translate:290%}}
 @media(prefers-reduced-motion:reduce){#ld .lr,#ld .pg:after{animation:none}}
+#lib.slide .card:not(.on){opacity:.4}
+#lib.slide .card.on:after{content:"✓";position:absolute;top:6px;right:6px;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#000;display:grid;place-items:center;font-weight:700;font-size:.85rem}

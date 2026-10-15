@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.8.0
+- Each wallpaper remembers its own dim, brightness, saturation, blur, fit, focus, vignette, tint and video settings ("Save per wallpaper").
+- Choose which wallpapers take part in the slideshow; shuffle or in-order playback.
+
 ## 2.7.0
 - Shortcut/bookmark open animation plays for a fixed time (default 2.5 s) while the site loads in a background tab.
 ## 2.6.0

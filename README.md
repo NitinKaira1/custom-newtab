@@ -4,12 +4,13 @@ A fast, private and fully customizable new-tab page for Brave, Chrome and Edge.
 Video and image wallpapers, draggable widgets, a now-playing audio widget, a real sound-reactive visualizer,
 bookmarks dock, scenes, themes and more. No account, no tracking, no heavy framework (about 100 KB).
 
+> Replace `YOUR-USERNAME` / `YOUR-REPO` below after you create the repository.
 
 ## Features
 
 | Area | What you get |
 |---|---|
-| Wallpapers | Upload your own image / GIF / video (looping), built-in library window with live hover preview, slideshow, day/night auto-switch, dim, blur, vignette, focus point, parallax |
+| Wallpapers | Upload your own image / GIF / video (looping), built-in library window with live hover preview, slideshow with your chosen wallpapers, per-wallpaper brightness/dim/blur settings, day/night auto-switch, vignette, focus point, parallax |
 | Widgets | Clock (digital + analog), date, greeting, search, shortcuts, notes, to-do, weather, focus timer, calendar, countdown, daily quote, bookmarks |
 | Audio | Now-playing players (bar, pill, circle, card, mini) for any tab playing audio; visualizer (bars, mirror, dots, wave, radial) that reacts to real sound |
 | Layout | Drag, resize and rotate any widget; snap to grid; zen mode; presets (Minimal / Balanced / Full) |
@@ -18,15 +19,25 @@ bookmarks dock, scenes, themes and more. No account, no tracking, no heavy frame
 | Open animation | Screen-fill loader with the site logo when you open a shortcut or bookmark |
 | Performance | Instant first paint, Lite mode (no blur, still wallpaper), video pauses when the tab is hidden |
 
+## What's new in v2.8
+
+- **Per-wallpaper settings**: every wallpaper remembers its own dim, brightness, blur and other adjustments, so slideshows always look right.
+- **Pick your slideshow wallpapers** (and choose shuffle or in-order).
+- Open animation that plays for a fixed time while the site loads in the background (v2.7).
+- Real sound-reactive visualizer, bookmarks dock, compact wallpaper library window (v2.5).
+
+Full history in [CHANGELOG.md](CHANGELOG.md).
+
 ## Install (Brave / Chrome / Edge)
 
-1. Go to the [Releases page](https://github.com/NitinKaira1/custom-newtab/releases) and download `custom-newtab-extension.zip`
+1. Go to the [Releases page](https://github.com/YOUR-USERNAME/YOUR-REPO/releases) and download `custom-newtab-extension.zip`
    (or click **Code > Download ZIP** and use the `extension` folder).
 2. Extract the zip to a folder you will keep (do not delete it later, the extension runs from there).
 3. Open `brave://extensions` (Chrome: `chrome://extensions`, Edge: `edge://extensions`).
 4. Turn on **Developer mode** (top-right).
 5. Click **Load unpacked** and select the extracted folder, the one that contains `manifest.json`.
 6. Turn off any other new-tab extension (only one can control the new tab), then press `Ctrl+T`.
+7. See a grey bar at the bottom of the new tab? That is the browser's own footer. [Here is how to hide it](#hide-the-grey-bar-at-the-bottom).
 
 Brave and Chrome may show a "developer mode extensions" notice on startup. That is normal for extensions installed this way.
 
@@ -38,6 +49,29 @@ Brave and Chrome may show a "developer mode extensions" notice on startup. That 
 4. **Widgets > Layout > Move & resize**: drag to move, drag the square corner to resize, the round corner to rotate,
    double-click to reset, arrow keys to nudge, `Esc` to finish.
 5. **Settings** tab > themes, glass style, accent color. Use the search box at the top if you cannot find something.
+
+## Hide the grey bar at the bottom
+
+After installing, Brave/Chrome may show a grey bar at the bottom of the new tab with a **"Custom New Tab"** link and a
+**Customize Brave** button. This is the browser's own footer that appears for every extension new tab. It is not part of this
+extension and it is safe to turn off:
+
+1. Click **Customize Brave** in the bottom bar (marked **1** in the screenshot).
+2. In the **Theme and colors** panel, scroll down to **Footer**.
+3. Turn off **Show footer on New Tab page** (marked **2**).
+
+![How to hide the footer: click Customize Brave, then switch off Show footer on New Tab page](docs/screenshots/hide-footer.png)
+
+Chrome and Edge show the same footer with slightly different names ("Customize Chrome" / "Customize Edge").
+You can also try right-clicking the bar and choosing **Hide footer on New Tab page**. You only have to do this once.
+
+## Slideshow and per-wallpaper settings
+
+- **Settings: Wallpapers > Auto change > Slideshow** picks how often the wallpaper changes (each new tab, 5 / 15 / 60 min).
+  **Slideshow wallpapers** opens a small window where you tick exactly which wallpapers take part. **Slideshow order** is shuffle or in order.
+- **Wallpapers > Adjust > Save per wallpaper** (on by default): each wallpaper keeps its own dim, brightness, saturation, blur, fit, focus,
+  vignette, tint and video settings. Adjust a wallpaper once and it looks the same every time the slideshow shows it.
+  *Reset this wallpaper* returns it to the defaults; *Use for all* makes the current look the default for every wallpaper.
 
 ## Keyboard shortcuts
 
@@ -85,21 +119,33 @@ Nothing is sent to the author. See [PRIVACY.md](PRIVACY.md).
 ## Web version (no install)
 
 A single-file web version lives in `docs/index.html` and can be hosted with GitHub Pages:
-[https://NitinKaira1.github.io/custom-newtab/](https://NitinKaira1.github.io/custom-newtab/).
+[https://YOUR-USERNAME.github.io/YOUR-REPO/](https://YOUR-USERNAME.github.io/YOUR-REPO/).
 Wallpapers, widgets, scenes and themes work. Audio widgets, tab audio, the bookmarks widget (it shows demo bookmarks), real weather
 and the background-tab open animation need the extension.
 
 ## Updating
 
-1. Download the new release zip and extract it over the old folder (same location).
-2. Open `brave://extensions` and click the reload icon.
+The version you have is shown on the extension card in `brave://extensions`. The newest version is on the
+[Releases page](https://github.com/YOUR-USERNAME/YOUR-REPO/releases).
 
-Your settings and uploaded wallpapers are kept. Use **Settings > Backup > Export** first if you want a safety copy.
+**Installed from a zip**
+
+1. Optional safety copy: open the settings (gear) > **Settings** tab > **Backup > Export**.
+2. Download the new `custom-newtab-extension.zip` from the Releases page.
+3. Extract it into the **same folder** as before and choose **Replace the files** when asked.
+4. Open `brave://extensions`, click the **reload** icon on the extension card, then open a new tab.
+
+**Cloned with git**: run `git pull`, then click the reload icon on the extension card.
+
+**Keep the folder in the same place.** The browser links an unpacked extension's saved data (settings and uploaded wallpapers)
+to the folder it was loaded from. Loading it from a different folder starts fresh, so if you must move it, export your settings first
+and import them after. Uploaded wallpapers are not part of the export and need to be added again.
 
 ## Troubleshooting
 
 | Problem | Fix |
 |---|---|
+| Grey bar with "Customize Brave" at the bottom | Browser footer, see [Hide the grey bar](#hide-the-grey-bar-at-the-bottom) |
 | Blank page / nothing shows | `brave://extensions` > *Errors* button on the card, then open an issue with the message |
 | Old new-tab page still shows | Turn off other new-tab extensions, then restart the browser |
 | Extension disappeared | The folder you loaded was moved or deleted. Load it again |
