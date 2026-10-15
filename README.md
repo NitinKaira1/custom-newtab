@@ -4,7 +4,7 @@ A fast, private and fully customizable new-tab page for Brave, Chrome and Edge.
 Video and image wallpapers, draggable widgets, a now-playing audio widget, a real sound-reactive visualizer,
 bookmarks dock, scenes, themes and more. No account, no tracking, no heavy framework (about 100 KB).
 
-> Replace `YOUR-USERNAME` / `YOUR-REPO` below after you create the repository.
+
 
 ## Features
 
@@ -30,7 +30,7 @@ Full history in [CHANGELOG.md](CHANGELOG.md).
 
 ## Install (Brave / Chrome / Edge)
 
-1. Go to the [Releases page](https://github.com/YOUR-USERNAME/YOUR-REPO/releases) and download `custom-newtab-extension.zip`
+1. Go to the [Releases page](https://github.com/NitinKaira1/custom-newtab/releases) and download `custom-newtab-extension.zip`
    (or click **Code > Download ZIP** and use the `extension` folder).
 2. Extract the zip to a folder you will keep (do not delete it later, the extension runs from there).
 3. Open `brave://extensions` (Chrome: `chrome://extensions`, Edge: `edge://extensions`).
@@ -119,14 +119,14 @@ Nothing is sent to the author. See [PRIVACY.md](PRIVACY.md).
 ## Web version (no install)
 
 A single-file web version lives in `docs/index.html` and can be hosted with GitHub Pages:
-[https://YOUR-USERNAME.github.io/YOUR-REPO/](https://YOUR-USERNAME.github.io/YOUR-REPO/).
+[https://NitinKaira1.github.io/custom-newtab/](https://NitinKaira1.github.io/custom-newtab/).
 Wallpapers, widgets, scenes and themes work. Audio widgets, tab audio, the bookmarks widget (it shows demo bookmarks), real weather
 and the background-tab open animation need the extension.
 
 ## Updating
 
 The version you have is shown on the extension card in `brave://extensions`. The newest version is on the
-[Releases page](https://github.com/YOUR-USERNAME/YOUR-REPO/releases).
+[Releases page](https://github.com/NitinKaira1/custom-newtab/releases).
 
 **Installed from a zip**
 
