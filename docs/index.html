@@ -71,11 +71,11 @@ body{background:#0b0e14;color:#fff;font-family:system-ui,-apple-system,"Segoe UI
 body.edit [data-w]{outline:1px dashed var(--ac);outline-offset:8px;cursor:grab;touch-action:none;user-select:none}
 body.edit [data-w] *{pointer-events:none}
 #done{position:fixed;top:16px;left:50%;translate:-50% 0;z-index:5;background:var(--ac);color:#000;border:0;border-radius:99px;padding:10px 20px;font:inherit;font-weight:600;cursor:pointer}
-body #sf,body #lk a,body .wg{background:rgba(255,255,255,var(--go,.1));border-radius:var(--rad,14px)}
-body.gloss #sf,body.gloss #lk a,body.gloss .wg{background:linear-gradient(145deg,rgba(255,255,255,.26),rgba(255,255,255,.05) 38%,rgba(0,0,0,.42));border:1px solid rgba(255,255,255,.4);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -12px 22px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.55);backdrop-filter:blur(calc(var(--bl)*.6)) saturate(1.5);-webkit-backdrop-filter:blur(calc(var(--bl)*.6)) saturate(1.5)}
+body #sf,body #lk a,body .wg{background:rgba(255,255,255,var(--go,.1));border-radius:var(--rad,14px);box-shadow:var(--gtsh,none)}
+body.gloss #sf,body.gloss #lk a,body.gloss .wg{background:linear-gradient(145deg,rgba(255,255,255,.26),rgba(255,255,255,.05) 38%,rgba(0,0,0,.42));border:1px solid rgba(255,255,255,.4);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -12px 22px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.55),var(--gtsh,0 0 0 0 transparent);backdrop-filter:blur(calc(var(--bl)*.6)) saturate(1.5);-webkit-backdrop-filter:blur(calc(var(--bl)*.6)) saturate(1.5)}
 body.gloss #sf:focus-within{border-color:var(--ac)}
-body.clear #sf,body.clear #lk a,body.clear .wg{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
-body.oled #sf,body.oled #lk a,body.oled .wg{background:#000;border:1px solid rgba(255,255,255,.2);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+body.clear #sf,body.clear #lk a,body.clear .wg{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);box-shadow:var(--gtsh,none)}
+body.oled #sf,body.oled #lk a,body.oled .wg{background:#000;border:1px solid rgba(255,255,255,.2);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:var(--gtsh,none)}
 #ui{color:var(--tc,#fff)}#q,#lk a,#nta,#ti,.wg .btn{color:inherit}
 #bg video,#bg img{filter:brightness(var(--br,1)) saturate(var(--sa,1)) blur(var(--wb,0px));object-fit:var(--fit,cover);transform:scale(1.05)}
 #clock[data-s=thin]{font-weight:200}#clock[data-s=bold]{font-weight:800}#clock[data-s=mono]{font-family:ui-monospace,Consolas,monospace}
@@ -110,9 +110,6 @@ body.nolbl #lk span{display:none}body.nolbl #lk b{margin-bottom:0}
 body.kb #bg img{animation:kb 40s ease-in-out infinite alternate}
 @media(prefers-reduced-motion:reduce){body.kb #bg img{animation:none}}
 #an{display:none;width:1.6em;height:1.6em}#clock[data-s=analog] #an{display:block}#clock[data-s=analog] #t,#clock[data-s=analog] #ap{display:none}
-body.zen :is(#sf,#lk,.wg,#cd,#qt){opacity:0;transition:opacity .35s}
-body.zen:not(.peek) :is(#sf,#lk,.wg,#cd,#qt){pointer-events:none}
-body.zen.peek :is(#sf,#lk,.wg,#cd,#qt){opacity:1}
 .aw{position:fixed;z-index:2;top:78%;left:calc(50% - var(--aw)/2);width:var(--aw);display:flex;align-items:center;gap:12px;padding:10px;user-select:none}
 .s-bar{--aw:340px}.s-pill{--aw:240px;border-radius:99px!important;padding:6px 14px 6px 6px}.s-circle{--aw:170px;height:170px;padding:0;border-radius:50%!important;justify-content:center}.s-card{--aw:210px;flex-direction:column;align-items:stretch}.s-mini{--aw:104px;border-radius:99px!important;padding:6px 12px;justify-content:space-between}
 .ar{position:relative;flex:none;width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--ac),#2a3350)}
@@ -143,7 +140,6 @@ body.edit [data-w][data-sel]{outline:2px solid var(--ac)}body.edit [data-w][data
 .eh{display:none;position:absolute;width:22px;height:22px;background:var(--ac);border:2px solid #000;border-radius:50%;z-index:6;box-shadow:0 2px 8px rgba(0,0,0,.45);scale:calc(1/var(--wsc,1))}
 .eh-s{right:-16px;bottom:-16px;cursor:nwse-resize;border-radius:5px}.eh-r{right:-16px;top:-16px;cursor:grab}
 body.edit [data-w]>.eh{display:block;pointer-events:auto}
-body.zen.edit :is(#sf,#lk,.wg,#cd,#qt){opacity:1;pointer-events:auto}
 details.sec{border-bottom:1px solid var(--pl)}
 details.sec>summary{cursor:pointer;list-style:none;padding:12px 22px 12px 2px;font-weight:600;font-size:.92rem;display:flex;flex-direction:column;gap:2px;position:relative}
 details.sec>summary::-webkit-details-marker{display:none}
@@ -192,6 +188,31 @@ body #bm[data-l=dock]{background:none!important;border:0!important;box-shadow:no
 @media(prefers-reduced-motion:reduce){#ld .lr,#ld .pg:after{animation:none}}
 #lib.slide .card:not(.on){opacity:.4}
 #lib.slide .card.on:after{content:"✓";position:absolute;top:6px;right:6px;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#000;display:grid;place-items:center;font-weight:700;font-size:.85rem}
+#clock{font-family:var(--cf,inherit)}
+details.zl>summary{cursor:pointer;font-size:.85rem;opacity:.85;padding:6px 0}#zlb{margin:4px 0 10px}
+#bmh{display:none}
+#bm[data-d=dd]{width:150px;left:calc(50% - 75px);padding:0}
+body #bm[data-d=dd]{background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+#bm[data-d=dd] #bmh{display:block;width:100%;padding:9px 14px;font:inherit;font-size:.85rem;white-space:nowrap;color:inherit;cursor:pointer;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:99px;backdrop-filter:blur(var(--bl));-webkit-backdrop-filter:blur(var(--bl))}
+#bm[data-d=dd] #bmp{display:none;position:absolute;bottom:calc(100% + 10px);left:50%;translate:-50% 0;width:min(var(--bw,560px),94vw);padding:12px;background:rgba(18,20,26,.86);border:1px solid rgba(255,255,255,.16);border-radius:16px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 18px 50px rgba(0,0,0,.5)}
+#bm[data-d=dd].open #bmp{display:block}#bm[data-d=dd].down #bmp{bottom:auto;top:calc(100% + 10px)}
+body.edit #bm #bmp{display:none!important}
+#bms2{width:100%;margin:0 0 10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:10px;color:#fff;padding:8px 12px;font:inherit;font-size:.85rem;outline:0}
+#bms2::placeholder{color:rgba(255,255,255,.55)}
+#bmh,#gwh{box-shadow:var(--gtsh,none)}
+#gw{position:fixed;z-index:2;left:calc(50% + 90px);bottom:84px}
+#gwh{display:none}
+#gw[data-d=dd]{width:auto;padding:0}
+body #gw[data-d=dd]{background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+#gw[data-d=dd] #gwh{display:block;padding:9px 14px;font:inherit;font-size:.85rem;white-space:nowrap;color:inherit;cursor:pointer;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:99px;backdrop-filter:blur(var(--bl));-webkit-backdrop-filter:blur(var(--bl))}
+#gw[data-d=dd] #gwp{display:none;position:absolute;bottom:calc(100% + 10px);right:0;width:min(calc(var(--gwc,4)*(var(--gws,52px) + 30px) + 24px),94vw);padding:12px;background:rgba(18,20,26,.86);border:1px solid rgba(255,255,255,.16);border-radius:16px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 18px 50px rgba(0,0,0,.5)}
+#gw[data-d=dd].open #gwp{display:block}#gw[data-d=dd].down #gwp{bottom:auto;top:calc(100% + 10px)}
+body.edit #gw #gwp{display:none!important}
+#gwg{display:grid;grid-template-columns:repeat(var(--gwc,4),1fr);gap:6px;max-height:min(60vh,420px);overflow:auto;scrollbar-width:thin}
+#gwg a{display:block;text-align:center;color:inherit;text-decoration:none;font-size:.72rem;padding:8px 2px;border-radius:12px;transition:background .15s,translate .15s}
+#gwg a:hover,#gwg a:focus-visible{background:rgba(255,255,255,.14);translate:0 -2px}
+#gwg b{display:grid;place-items:center;width:var(--gws,52px);height:var(--gws,52px);border-radius:calc(var(--gws,52px)*.3);margin:0 auto 6px;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+#gwg b svg,#gwg b img{width:56%;height:56%}#gwg span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#gw.nolbl #gwg span{display:none}
 </style></head>
 <body>
 <div id="bg"></div>
@@ -211,7 +232,8 @@ body #bm[data-l=dock]{background:none!important;border:0!important;box-shadow:no
 <section id="wx" class="wg" data-w="wx" hidden></section>
 <section id="pm" class="wg" data-w="pm" hidden><div id="pt">25:00</div><div class="pr"><button class="btn" id="pg">Start</button><button class="btn" data-pm="25">Focus</button><button class="btn" data-pm="5">Break</button></div></section>
 <section id="cal" class="wg" data-w="cal" hidden></section>
-<section id="bm" class="wg" data-w="bm" hidden><div class="bt" id="bmt"></div><div id="bmg"></div></section>
+<section id="bm" class="wg" data-w="bm" hidden><button id="bmh" type="button"></button><div id="bmp"><div class="bt" id="bmt"></div><input id="bms2" type="text" placeholder="Search bookmarks" aria-label="Search bookmarks"><div id="bmg"></div></div></section>
+<section id="gw" class="wg" data-w="gw" hidden><button id="gwh" type="button"></button><div id="gwp"><div id="gwg"></div></div></section>
 <div id="lib" class="win" hidden role="dialog" aria-label="Wallpaper library"><div id="lh"><b id="lt">Wallpaper library</b><button class="btn" id="lc" aria-label="Close">✕</button></div><div class="ch" id="lf"></div><div id="lg"></div></div>
 <button id="gear" aria-label="Customize">⚙</button>
 <aside id="pn" aria-label="Settings">
@@ -269,6 +291,7 @@ body #bm[data-l=dock]{background:none!important;border:0!important;box-shadow:no
   <div class="r">Countdown<input type="checkbox" data-k="sCd"></div>
   <div class="r">Daily quote<input type="checkbox" data-k="sQt"></div>
   <div class="r">Bookmarks<input type="checkbox" data-k="sBm"></div>
+  <div class="r">Google apps<input type="checkbox" data-k="sGw"></div>
   <h3>Audio players</h3>
   <p class="note">Shows what's playing in your other tabs (extension). The preview uses a demo track.</p>
   <div id="awl"></div><button class="btn big" id="awa">+ Add audio widget</button>
@@ -278,16 +301,25 @@ body #bm[data-l=dock]{background:none!important;border:0!important;box-shadow:no
   <div id="vzl"></div><button class="btn big" id="vza">+ Add visualizer bars</button>
   <h3>Bookmarks</h3>
   <div class="r">Folder<select id="bmf"></select></div>
+  <div class="r">Show as<select data-k="bmd"><option value="dd">Dropdown (saves space)</option><option value="open">Always open</option></select></div>
   <div class="r">Layout<select data-k="bml"><option value="grid">Grid</option><option value="dock">Dock</option><option value="list">List</option></select></div>
   <div class="r">Icon size<input type="range" data-k="bms" min="36" max="96" step="2"></div>
   <div class="r">Width<input type="range" data-k="bmw" min="280" max="900" step="10"></div>
   <div class="r">Show names<input type="checkbox" data-k="bmn"></div>
   <div class="r">Folder tabs<input type="checkbox" data-k="bmt"></div>
+  <h3>Google apps</h3>
+  <div class="r">Show as<select data-k="gwd"><option value="dd">Dropdown (saves space)</option><option value="open">Always open</option></select></div>
+  <div class="r">Icon size<input type="range" data-k="gws" min="36" max="80" step="2"></div>
+  <div class="r">Columns<input type="range" data-k="gwc" min="3" max="6" step="1"></div>
+  <div class="r">Show names<input type="checkbox" data-k="gwn"></div>
+  <div class="r">Account number (0 = first)<input type="number" data-k="gwa" min="0" max="9" style="width:64px"></div>
+  <details class="zl"><summary>Choose which apps to show</summary><div class="ch" id="gwl"></div></details>
   <h3>Arrange</h3>
   <div class="r">Vertical align<select data-k="va"><option value="start">Top</option><option value="center">Center</option><option value="end">Bottom</option></select></div>
   <div class="r">Spacing<input type="range" data-k="gap" min="0" max="48" step="2"></div>
   <div class="r">Snap to grid<input type="checkbox" data-k="snap"></div>
   <div class="r">Zen mode (press Z)<input type="checkbox" data-k="zen"></div>
+  <details class="zl"><summary>Choose what zen mode hides</summary><div class="ch" id="zlb"></div></details>
   <h3>Clock</h3>
   <div class="r">Your name<input type="text" data-k="name" placeholder="optional"></div>
   <div class="r">Size<input type="range" data-k="cs" min="40" max="220" step="2"></div>
@@ -314,12 +346,18 @@ body #bm[data-l=dock]{background:none!important;border:0!important;box-shadow:no
   <h3>Look</h3><div class="ch" id="thm"></div>
   <div class="r">Glass style<select data-k="gs"><option value="frost">Frosted</option><option value="gloss">Glossy</option><option value="clear">Clear</option><option value="oled">OLED black</option></select></div>
   <div class="r">Glass opacity<input type="range" data-k="go" min="0" max=".4" step=".01"></div>
+  <div class="r">Glass tint color<input type="color" data-k="gt"></div>
+  <div class="r">Tint strength<input type="range" data-k="gts" min="0" max=".6" step=".02"></div>
   <div class="r">Lite mode (no blur, still video)<input type="checkbox" data-k="lite"></div>
   <div class="r">Corner radius<input type="range" data-k="rad" min="0" max="32" step="1"></div>
   <div class="r">Text color<input type="color" data-k="tc"></div>
   <div class="r">Text shadow<input type="range" data-k="sh" min="0" max="1" step=".05"></div>
   <div class="r">Accent<input type="color" data-k="ac"></div>
   <div class="r">Font<select data-k="font"><option value="sans">Clean</option><option value="serif">Serif</option><option value="mono">Mono</option><option value="round">Rounded</option></select></div>
+  <div class="r">Google font (all text)<input type="text" data-k="gf" list="gfl" placeholder="e.g. Poppins"></div>
+  <div class="r">Google font (clock)<input type="text" data-k="gfc" list="gfl" placeholder="e.g. Orbitron"></div>
+  <p class="note">Type any family name from <a href="https://fonts.google.com" target="_blank" rel="noopener" style="color:inherit">fonts.google.com</a>. Needs internet. Leave empty to use the built-in fonts.</p>
+  <datalist id="gfl"><option value="Poppins"><option value="Inter"><option value="Montserrat"><option value="Playfair Display"><option value="Orbitron"><option value="Bebas Neue"><option value="Space Grotesk"><option value="JetBrains Mono"><option value="Pacifico"><option value="Oswald"><option value="Raleway"><option value="Lobster"><option value="Rajdhani"><option value="Quicksand"></datalist>
   <div class="r">Glass blur<input type="range" data-k="blur" min="0" max="30" step="1"></div>
   <div class="r">Panel theme<select id="th"><option value="">System</option><option value="dark">Dark</option><option value="light">Light</option></select></div>
   <h3>Search &amp; text</h3>
@@ -331,10 +369,14 @@ body #bm[data-l=dock]{background:none!important;border:0!important;box-shadow:no
   <div class="r">Search engine<select data-k="eng"><option value="https://duckduckgo.com/?q=">DuckDuckGo</option><option value="https://search.brave.com/search?q=">Brave</option><option value="https://www.google.com/search?q=">Google</option><option value="https://www.bing.com/search?q=">Bing</option></select></div>
   <h3>Custom CSS</h3>
   <textarea data-k="css" spellcheck="false" placeholder="#clock{font-weight:200}"></textarea>
-  <h3>Backup</h3><div class="pr"><button class="btn" id="ex">Export</button><button class="btn" id="im">Import</button></div><input id="imf" type="file" accept=".json" hidden>
+  <h3>Backup</h3>
+  <p class="note" id="bkn"></p>
+  <div class="r">Settings only<span class="pr" style="flex:none"><button class="btn" id="ex">Export</button><button class="btn" id="im">Import</button></span></div>
+  <div class="r">Full backup (with wallpapers)<span class="pr" style="flex:none"><button class="btn" id="exf">Export</button><button class="btn" id="imf2b">Import</button></span></div>
+  <input id="imf" type="file" accept=".json" hidden><input id="imf2" type="file" accept=".ntbk" hidden>
   <h3>Reset</h3><button class="btn" id="rs">Reset all settings</button>
  </section>
-<p class="hint">v2.8 · Ctrl+K commands · / search · Esc close</p></aside>
+<p class="hint">v2.10 · Ctrl+K commands · / search · Esc close</p></aside>
 <script>
 const $=q=>document.querySelector(q),$$=q=>[...document.querySelectorAll(q)];
 const G=["linear-gradient(135deg,#0f2027,#203a43,#2c5364)","linear-gradient(135deg,#1a0f2e,#4a1d6b,#c2417a)","linear-gradient(135deg,#0b0e14,#1b2a49,#3b6ea5)","linear-gradient(135deg,#141e14,#2d5a3d,#9bc27a)","linear-gradient(135deg,#1c1010,#7a2e1d,#f2a65a)","radial-gradient(circle at 70% 30%,#243b6b,#05070d 70%)"];
@@ -344,7 +386,7 @@ const LIB=[ // Add favourites here: {n:"Name",t:"video"|"img"|"css",s:"file or U
  // {n:"Mountains",t:"img",s:"wallpapers/mountains.jpg"},
 ];
 const F={sans:'system-ui,-apple-system,"Segoe UI",sans-serif',serif:'Georgia,"Times New Roman",serif',mono:'ui-monospace,Consolas,monospace',round:'ui-rounded,"Segoe UI Variable Display","Trebuchet MS",sans-serif'};
-const D={pw:true,wp:{},ssl:[],sso:"shuf",ld:"grow",ldd:2.5,dh:6,nh:18,dayN:"",nightN:"",dayT:"",nightT:"",sBm:false,bmf:"",bml:"grid",bms:56,bmn:true,bmt:true,bmw:560,vz:[],vm:"tab",aw:[],rot:{},clw:600,cls:-.02,sh:.35,vg:0,tint:"#000000",ox:50,oy:50,kb:false,px:false,gap:14,va:"center",snap:false,zen:false,tile:92,lbl:true,cw:560,ph:"Search or type a URL",af:false,greet:"",df:"long",lite:false,br:1,sa:1,wb:0,fit:"cover",vs:1,snd:false,ss:"off",dn:false,day:"",night:"",sWx:false,sPm:false,sCal:false,sCd:false,sQt:false,cst:"w6",gs:"frost",go:.1,rad:14,tc:"#ffffff",city:"",unit:"C",cdn:"",cdd:"",scenes:{},pos:{},scl:{},sNotes:false,sTodo:false,todos:[],notes:"",css:"",bg:"g2",dim:.25,blur:12,ac:"#5eead4",font:"sans",h24:false,sec:false,cs:96,name:"",sClock:true,sDate:true,sGreet:true,sSearch:true,sLinks:true,eng:"https://duckduckgo.com/?q=",links:[{n:"YouTube",u:"https://youtube.com"},{n:"Pinterest",u:"https://pinterest.com"},{n:"Steam",u:"https://store.steampowered.com"},{n:"GitHub",u:"https://github.com"}]};
+const D={sGw:false,gwd:"dd",gws:52,gwc:4,gwn:true,gwa:0,gwl:["gmail","drive","docs","sheets","slides","forms","classroom","meet","calendar","photos","maps","youtube"],gt:"#ffffff",gts:0,zl:["sf","lk","nw","tw","wx","pm","cal","cd","qt","bm","gw","aw","vz"],gf:"",gfc:"",bmd:"dd",pw:true,wp:{},ssl:[],sso:"shuf",ld:"grow",ldd:2.5,dh:6,nh:18,dayN:"",nightN:"",dayT:"",nightT:"",sBm:false,bmf:"",bml:"grid",bms:56,bmn:true,bmt:true,bmw:560,vz:[],vm:"tab",aw:[],rot:{},clw:600,cls:-.02,sh:.35,vg:0,tint:"#000000",ox:50,oy:50,kb:false,px:false,gap:14,va:"center",snap:false,zen:false,tile:92,lbl:true,cw:560,ph:"Search or type a URL",af:false,greet:"",df:"long",lite:false,br:1,sa:1,wb:0,fit:"cover",vs:1,snd:false,ss:"off",dn:false,day:"",night:"",sWx:false,sPm:false,sCal:false,sCd:false,sQt:false,cst:"w6",gs:"frost",go:.1,rad:14,tc:"#ffffff",city:"",unit:"C",cdn:"",cdd:"",scenes:{},pos:{},scl:{},sNotes:false,sTodo:false,todos:[],notes:"",css:"",bg:"g2",dim:.25,blur:12,ac:"#5eead4",font:"sans",h24:false,sec:false,cs:96,name:"",sClock:true,sDate:true,sGreet:true,sSearch:true,sLinks:true,eng:"https://duckduckgo.com/?q=",links:[{n:"YouTube",u:"https://youtube.com"},{n:"Pinterest",u:"https://pinterest.com"},{n:"Steam",u:"https://store.steampowered.com"},{n:"GitHub",u:"https://github.com"}]};
 let s;try{s={...D,...JSON.parse(localStorage.getItem("nt")||"{}")}}catch(e){s={...D}}
 let svT,dead=0;const flush=()=>{clearTimeout(svT);if(dead)return;try{localStorage.setItem("nt",JSON.stringify(s))}catch(e){}},save=()=>{clearTimeout(svT);svT=setTimeout(flush,250)};addEventListener("pagehide",flush);
 const db=new Promise(r=>{try{const q=indexedDB.open("nt",1);q.onupgradeneeded=()=>q.result.createObjectStore("m",{keyPath:"id"});q.onsuccess=()=>r(q.result);q.onerror=()=>r(null)}catch(e){r(null)}});
@@ -489,14 +531,17 @@ let ll=!!s.lite;const ap1=apply;let wt;apply=()=>{ap1();const r=document.documen
  [["br","--br",""],["sa","--sa",""],["wb","--wb","px"],["fit","--fit",""],["tc","--tc",""],["go","--go",""],["rad","--rad","px"]].forEach(([k,v,u])=>r.setProperty(v,s[k]+u));
  ["frost","gloss","clear","oled"].forEach(c=>bd.classList.toggle(c,s.gs==c));
  $("#clock").dataset.s=s.cst;
- [["sWx","#wx"],["sPm","#pm"],["sCal","#cal"],["sCd","#cd"],["sQt","#qt"],["sBm","#bm"]].forEach(([k,q])=>$(q).hidden=!s[k]);
- if(s.sCal)cal();if(s.sCd)cd();if(s.sQt)qt();if(s.sBm)renderBM();vp();ssch();clearTimeout(wt);wt=setTimeout(wx,700);bd.classList.toggle("lite",!!s.lite);
+ [["sWx","#wx"],["sPm","#pm"],["sCal","#cal"],["sCd","#cd"],["sQt","#qt"],["sBm","#bm"],["sGw","#gw"]].forEach(([k,q])=>$(q).hidden=!s[k]);
+ if(s.sCal)cal();if(s.sCd)cd();if(s.sQt)qt();if(s.sBm)renderBM();if(s.sGw)renderGW();vp();ssch();clearTimeout(wt);wt=setTimeout(wx,700);bd.classList.toggle("lite",!!s.lite);
  [["clw","--clw",""],["cls","--cls","em"],["sh","--sh",""],["vg","--vg",""],["tint","--tint",""],["ox","--ox","%"],["oy","--oy","%"],["gap","--gap","px"],["tile","--tile","px"],["cw","--cw","px"]].forEach(([k,v,u])=>r.setProperty(v,s[k]+u));
  r.setProperty("--va",{start:"flex-start",center:"center",end:"flex-end"}[s.va]||"center");
- bd.classList.toggle("kb",!!s.kb);bd.classList.toggle("nolbl",!s.lbl);bd.classList.toggle("zen",!!s.zen);$("#q").placeholder=s.ph;
+ bd.classList.toggle("kb",!!s.kb);bd.classList.toggle("nolbl",!s.lbl);bd.classList.toggle("zen",!!s.zen);bd.dataset.zh=(s.zl||[]).join(" ");
+ {const hx=(s.gt||"#ffffff").replace("#",""),c=[0,2,4].map(i=>parseInt(hx.slice(i,i+2),16)||0);r.setProperty("--gtsh",+s.gts>0?`inset 0 0 0 999px rgba(${c[0]},${c[1]},${c[2]},${s.gts})`:"0 0 0 0 transparent")}
+ {const g1=gfn(s.gf),g2=gfn(s.gfc),fb=F[s.font]||F.sans;bd.style.fontFamily=g1?`"${g1}",${fb}`:fb;r.setProperty("--cf",g2?`"${g2}",${fb}`:"inherit");clearTimeout(gft);gft=setTimeout(()=>{gfLoad("gf1",g1);gfLoad("gf2",g2)},700)}
+ $("#q").placeholder=s.ph;
  if(!s.px){const m=$("#bg").firstElementChild;if(m)m.style.translate=""}
  if(!!s.lite!==ll){ll=!!s.lite;bg()}lay()};
-$$("[data-pre]").forEach(b=>b.onclick=()=>{const f=b.dataset.pre;for(const k in PRE[f])s[k]=!!PRE[f][k];["sWx","sPm","sCal","sCd","sQt","sBm"].forEach(k=>s[k]=f=="full");save();sync();apply()});
+$$("[data-pre]").forEach(b=>b.onclick=()=>{const f=b.dataset.pre;for(const k in PRE[f])s[k]=!!PRE[f][k];["sWx","sPm","sCal","sCd","sQt","sBm","sGw"].forEach(k=>s[k]=f=="full");save();sync();apply()});
 function sceneApply(k){const keep={scenes:s.scenes,todos:s.todos,notes:s.notes};s={...D,...JSON.parse(JSON.stringify(s.scenes[k])),...keep};save();sync();apply();links();lastBg=null;bg();renderAW();awPanel();renderV();vzPanel()}
 function scn(){const l=$("#sl");l.innerHTML="";Object.keys(s.scenes).forEach(k=>{const r=document.createElement("div");r.className="lr";const a=document.createElement("button");a.className="btn";a.textContent=k;a.style.flex=1;a.onclick=()=>sceneApply(k);const x=document.createElement("button");x.className="btn";x.textContent="×";x.onclick=()=>{delete s.scenes[k];save();scn()};r.append(a,x);l.append(r)})}
 $("#sv").onclick=()=>{const n=$("#sn").value.trim();if(!n)return;const c=JSON.parse(JSON.stringify(s));delete c.scenes;delete c.todos;delete c.notes;s.scenes[n]=c;$("#sn").value="";save();scn()};
@@ -511,6 +556,7 @@ function crd(){const c=$("#cr");c.innerHTML="";items.slice(0,8).forEach((it,i)=>
 function cmds(){const q=$("#ci").value.trim(),lq=q.toLowerCase(),b=q.match(/^!(\w+)\s+(.+)/);
  items=b&&BANG[b[1]]?[{n:"Search "+b[1]+": "+b[2],f:()=>location.href=BANG[b[1]]+encodeURIComponent(b[2])}]:[...s.links.map(l=>({n:l.n,f:()=>location.href=l.u})),{n:"Open settings",f:()=>tg(true)},{n:"Move & resize widgets",f:()=>$("#ed").click()},{n:"Wallpaper library",f:libOpen},{n:"Random wallpaper",f:rnd},{n:"Toggle zen mode",f:()=>{s.zen=!s.zen;save();sync();apply()}},...Object.keys(s.scenes).map(k=>({n:"Scene: "+k,f:()=>sceneApply(k)}))].filter(i=>i.n.toLowerCase().includes(lq));
  if(q.length>1&&!b)bmFlat.filter(x=>x.t.toLowerCase().includes(lq)||x.u.toLowerCase().includes(lq)).slice(0,4).forEach(x=>items.push({n:"★ "+x.t,f:()=>location.href=x.u}));
+ if(q.length>1&&!b)GA.filter(a=>a[1].toLowerCase().includes(lq)).slice(0,3).forEach(a=>items.push({n:"G  "+a[1],f:()=>location.href=gUrl(a[2])}));
  if(q&&!b)items.push({n:"Search the web for "+q,f:()=>location.href=s.eng+encodeURIComponent(q)});cx=0;crd()}
 $("#ci").oninput=cmds;
 $("#ci").onkeydown=e=>{if(e.key=="ArrowDown"){cx=Math.min(cx+1,Math.min(items.length,8)-1);crd();e.preventDefault()}else if(e.key=="ArrowUp"){cx=Math.max(cx-1,0);crd();e.preventDefault()}else if(e.key=="Enter"&&items[cx]){cp.hidden=true;items[cx].f()}else if(e.key=="Escape")cp.hidden=true};
@@ -524,7 +570,7 @@ tabs.forEach((b,i)=>{b.setAttribute("role","tab");b.onclick=()=>selTab(b);b.onke
 try{if(!localStorage.getItem("nt-seen")){localStorage.setItem("nt-seen","1");setTimeout(()=>toast("Tip: ⚙ opens settings · Ctrl+K opens commands"),900)}}catch(e){}
 
 $("#tk").innerHTML=Array.from({length:12},(_,i)=>`<line y1="-44" y2="-${i%3?41:38}" stroke="currentColor" stroke-width="${i%3?1:2}" transform="rotate(${i*30})"/>`).join("");
-const TH={Aurora:{ac:"#5eead4",gs:"frost",go:.1,rad:16,tc:"#ffffff",dim:.25,vg:.2},Sunset:{ac:"#fb923c",gs:"gloss",go:.1,rad:20,tc:"#fff4e8",dim:.2,vg:.3},Mono:{ac:"#ffffff",gs:"clear",go:.04,rad:6,tc:"#f2f2f2",dim:.35,vg:.25},Neon:{ac:"#e879f9",gs:"gloss",go:.08,rad:14,tc:"#ffffff",dim:.3,vg:.35},OLED:{ac:"#38bdf8",gs:"oled",go:.1,rad:12,tc:"#ffffff",dim:.45,vg:0}};
+const TH={Aurora:{gt:"#5eead4",gts:.08,ac:"#5eead4",gs:"frost",go:.1,rad:16,tc:"#ffffff",dim:.25,vg:.2},Sunset:{gt:"#fb923c",gts:.12,ac:"#fb923c",gs:"gloss",go:.1,rad:20,tc:"#fff4e8",dim:.2,vg:.3},Mono:{gt:"#ffffff",gts:0,ac:"#ffffff",gs:"clear",go:.04,rad:6,tc:"#f2f2f2",dim:.35,vg:.25},Neon:{gt:"#e879f9",gts:.12,ac:"#e879f9",gs:"gloss",go:.08,rad:14,tc:"#ffffff",dim:.3,vg:.35},OLED:{gt:"#38bdf8",gts:0,ac:"#38bdf8",gs:"oled",go:.1,rad:12,tc:"#ffffff",dim:.45,vg:0}};
 $("#thm").append(...Object.keys(TH).map(n=>{const b=document.createElement("button");b.className="btn";b.textContent=n;b.onclick=()=>{Object.assign(s,TH[n]);save();sync();apply();toast(n+" theme applied")};return b}));
 let rq,pk;addEventListener("mousemove",e=>{if(s.zen){bd.classList.add("peek");clearTimeout(pk);pk=setTimeout(()=>bd.classList.remove("peek"),2500)}
  if(!s.px||rq)return;rq=requestAnimationFrame(()=>{rq=0;const m=$("#bg").firstElementChild;if(m&&m.style)m.style.translate=`${(.5-e.clientX/innerWidth)*24}px ${(.5-e.clientY/innerHeight)*24}px`})});
@@ -658,8 +704,8 @@ addEventListener("wheel",e=>{if(!editing())return;const el=e.target.closest("[da
 addEventListener("dblclick",e=>{if(!editing())return;const el=e.target.closest("[data-w]");if(!el)return;const w=el.dataset.w;delete s.pos[w];delete s.scl[w];delete s.rot[w];place(el,w);save();toast("Widget reset")});
 addEventListener("keydown",e=>{if(!editing()||!selW||!/^Arrow/.test(e.key))return;e.preventDefault();const p=(s.pos[selW]||[0,0]).slice(),st=e.shiftKey?.02:.004;
  if(e.key=="ArrowLeft")p[0]-=st;else if(e.key=="ArrowRight")p[0]+=st;else if(e.key=="ArrowUp")p[1]-=st;else p[1]+=st;s.pos[selW]=p;const el=document.querySelector(`[data-w="${selW}"]`);if(el)place(el,selW);clearTimeout(wsv);wsv=setTimeout(save,200)});
-const DESC={"My uploads":"Your own images and videos. Click to use, × to delete.","Adjust":"Fine-tune the wallpaper. Saved separately for each wallpaper.","Auto change":"Slideshow (pick which wallpapers) and day/night switching.","Layout":"Quick presets, plus move and resize widgets.","Show":"Turn widgets on or off.","Audio players":"Now-playing widgets for music in other tabs.","Visualizer bars":"Animated equalizer widgets.","Bookmarks":"Your browser bookmarks as a grid, dock or list.","Arrange":"Spacing, alignment, snapping and zen mode.","Clock":"Clock size, style and format.","Weather & countdown":"City for weather, and an event countdown.","Shortcuts":"Edit tiles and the open animation.","Scenes":"Save and switch whole looks in one click.","Look":"Themes, glass style, colors and fonts.","Search & text":"Search bar, greeting and date format.","Custom CSS":"Advanced: your own CSS overrides.","Backup":"Export or import all settings.","Reset":"Restore defaults."};
-const TIP={"Dim":"Darkens the wallpaper so text is easier to read","Brightness":"Wallpaper brightness","Saturation":"Wallpaper color intensity (0 = black & white)","Blur":"Blurs the wallpaper","Fit":"Fill crops to cover the screen; Fit shows the whole image","Focus X":"Which part of the wallpaper stays visible when cropped","Focus Y":"Which part of the wallpaper stays visible when cropped","Vignette":"Darkens the screen edges","Tint color":"Color of the dim layer","Slow zoom":"Gentle zoom animation on images","Mouse parallax":"Wallpaper shifts slightly with your mouse","Video speed":"Playback speed of video wallpapers","Video sound":"Play the video's audio","Slideshow":"Change wallpaper automatically","Save per wallpaper":"Each wallpaper remembers its own dim, brightness, blur and other adjustments","Slideshow order":"Random or one after another","Slideshow wallpapers":"Choose which wallpapers take part in the slideshow","Auto day":"Use different wallpapers by time of day","Vertical align":"Where the main content sits on screen","Spacing":"Gap between widgets","Snap to grid":"Dragged widgets line up to a grid","Zen mode":"Hides everything except the clock until you move the mouse","Weight":"Clock thickness (Regular style only)","Letter spacing":"Space between clock digits","Tile size":"Size of shortcut tiles","Open animation":"Timed full-screen animation with the site logo while the site loads behind it","Animation length":"Seconds the animation plays before the site is shown","Show names":"Show labels under shortcuts","Glass style":"Look of cards and the search bar","Glass opacity":"How solid frosted cards are","Lite mode":"Faster on slow PCs: no blur, still video frame","Corner radius":"Roundness of cards","Text shadow":"Helps text stay readable on bright wallpapers","Search width":"Width of the search bar","Focus search":"Cursor is in the search bar when a tab opens","Greeting text":"Replace the automatic greeting","Panel theme":"Light or dark style for this settings panel","Source":"Where the bars get their motion"};
+const DESC={"My uploads":"Your own images and videos. Click to use, × to delete.","Adjust":"Fine-tune the wallpaper. Saved separately for each wallpaper.","Auto change":"Slideshow (pick which wallpapers) and day/night switching.","Layout":"Quick presets, plus move and resize widgets.","Show":"Turn widgets on or off.","Audio players":"Now-playing widgets for music in other tabs.","Visualizer bars":"Animated equalizer widgets.","Bookmarks":"Your browser bookmarks as a grid, dock or list.","Google apps":"Launcher for Gmail, Drive, Classroom and other Google apps.","Arrange":"Spacing, alignment, snapping and zen mode.","Clock":"Clock size, style and format.","Weather & countdown":"City for weather, and an event countdown.","Shortcuts":"Edit tiles and the open animation.","Scenes":"Save and switch whole looks in one click.","Look":"Themes, glass style, colors and fonts.","Search & text":"Search bar, greeting and date format.","Custom CSS":"Advanced: your own CSS overrides.","Backup":"Back up settings only, or settings plus your uploaded wallpapers.","Reset":"Restore defaults."};
+const TIP={"Dim":"Darkens the wallpaper so text is easier to read","Brightness":"Wallpaper brightness","Saturation":"Wallpaper color intensity (0 = black & white)","Blur":"Blurs the wallpaper","Fit":"Fill crops to cover the screen; Fit shows the whole image","Focus X":"Which part of the wallpaper stays visible when cropped","Focus Y":"Which part of the wallpaper stays visible when cropped","Vignette":"Darkens the screen edges","Tint color":"Color of the dim layer","Slow zoom":"Gentle zoom animation on images","Mouse parallax":"Wallpaper shifts slightly with your mouse","Video speed":"Playback speed of video wallpapers","Video sound":"Play the video's audio","Slideshow":"Change wallpaper automatically","Save per wallpaper":"Each wallpaper remembers its own dim, brightness, blur and other adjustments","Slideshow order":"Random or one after another","Slideshow wallpapers":"Choose which wallpapers take part in the slideshow","Auto day":"Use different wallpapers by time of day","Vertical align":"Where the main content sits on screen","Spacing":"Gap between widgets","Snap to grid":"Dragged widgets line up to a grid","Zen mode":"Hides the parts you choose below until you move the mouse. Press / to search while zen is on","Weight":"Clock thickness (Regular style only)","Letter spacing":"Space between clock digits","Tile size":"Size of shortcut tiles","Open animation":"Timed full-screen animation with the site logo while the site loads behind it","Animation length":"Seconds the animation plays before the site is shown","Show names":"Show labels under shortcuts","Glass style":"Look of cards and the search bar","Glass opacity":"How solid frosted cards are","Glass tint color":"Colors the glass cards, search bar and bookmark/app buttons","Tint strength":"0 = no tint; higher = stronger color","Lite mode":"Faster on slow PCs: no blur, still video frame","Corner radius":"Roundness of cards","Text shadow":"Helps text stay readable on bright wallpapers","Search width":"Width of the search bar","Focus search":"Cursor is in the search bar when a tab opens","Greeting text":"Replace the automatic greeting","Panel theme":"Light or dark style for this settings panel","Source":"Where the bars get their motion"};
 $$(".pg").forEach(pg=>{let det=null,first=true;[...pg.children].forEach(k=>{if(k.tagName=="H3"){det=document.createElement("details");det.className="sec";det.open=first;first=false;const sm=document.createElement("summary");sm.textContent=k.textContent;const t=DESC[k.textContent];if(t){const sp=document.createElement("small");sp.textContent=t;sm.append(sp)}det.append(sm);k.replaceWith(det)}else if(det)det.append(k)})});
 $$("#pn .r").forEach(r=>{const t=r.firstChild&&r.firstChild.nodeType==3?r.firstChild.textContent:"",k=Object.keys(TIP).find(x=>t.startsWith(x));if(k)r.title=TIP[k]});
 $("#ps").oninput=e=>{const q=e.target.value.trim().toLowerCase();pn.classList.toggle("srch",!!q);
@@ -715,11 +761,14 @@ function tile(n,u){const a=document.createElement("a");a.href=u;let h="",k=0;try
  const b=document.createElement("b");b.textContent=(n[0]||"?").toUpperCase();b.style.background=`hsl(${k} 55% 42%)`;
  if(window.chrome&&chrome.runtime&&chrome.runtime.id){const im=new Image();im.alt="";im.src=chrome.runtime.getURL("/_favicon/")+"?pageUrl="+encodeURIComponent(u)+"&size=32";im.onload=()=>{b.textContent="";b.style.background="rgba(255,255,255,.14)";b.append(im)}}
  const t=document.createElement("span");t.textContent=n;a.title=n;a.append(b,t);return a}
-function renderBM(){if(!s.sBm||!BM)return;const r=bmFind(bmCur||s.bmf||BM[0].id)||{n:BM[0],p:null},f=r.n,e=$("#bm");
- e.dataset.l=s.bml;e.style.setProperty("--bs",s.bms+"px");e.style.setProperty("--bw",s.bmw+"px");e.classList.toggle("nolbl",!s.bmn);
- const t=$("#bmt"),g=$("#bmg");t.innerHTML="";g.innerHTML="";t.hidden=!s.bmt;
- if(s.bmt){const mk=(l,id,on)=>{const b=document.createElement("button");b.textContent=l;b.className="bch"+(on?" on":"");b.onclick=()=>{bmCur=id;renderBM()};t.append(b)};if(r.p)mk("‹ "+r.p.t,r.p.id);mk(f.t,f.id,true);f.c.filter(x=>x.c).forEach(x=>mk(x.t,x.id))}
- f.c.filter(x=>x.u).forEach(x=>g.append(tile(x.t,x.u)));if(!g.children.length)g.textContent="No bookmarks in this folder"}
+let bmQ="";
+function renderBM(){if(!s.sBm||!BM)return;const r=bmFind(bmCur||s.bmf||BM[0].id)||{n:BM[0],p:null},f=r.n,e=$("#bm"),dd=s.bmd!="open";
+ e.dataset.l=s.bml;e.dataset.d=dd?"dd":"open";e.style.setProperty("--bs",s.bms+"px");e.style.setProperty("--bw",s.bmw+"px");e.classList.toggle("nolbl",!s.bmn);if(!dd)e.classList.remove("open");
+ const q=bmQ.trim().toLowerCase(),t=$("#bmt"),g=$("#bmg"),cnt=a=>a.reduce((c,x)=>c+(x.u?1:cnt(x.c)),0);t.innerHTML="";g.innerHTML="";
+ $("#bmh").textContent="★ "+f.t+" · "+cnt(f.c)+" ▾";t.hidden=!s.bmt||!!q;
+ if(s.bmt&&!q){const mk=(l,id,on)=>{const b=document.createElement("button");b.textContent=l;b.className="bch"+(on?" on":"");b.onclick=()=>{bmCur=id;renderBM()};t.append(b)};if(r.p)mk("‹ "+r.p.t,r.p.id);mk(f.t,f.id,true);f.c.filter(x=>x.c).forEach(x=>mk(x.t,x.id))}
+ (q?bmFlat.filter(x=>x.t.toLowerCase().includes(q)||x.u.toLowerCase().includes(q)).slice(0,80):f.c.filter(x=>x.u)).forEach(x=>g.append(tile(x.t,x.u)));
+ if(!g.children.length)g.textContent=q?"No matches":"No bookmarks in this folder"}
 bmLoad().then(()=>{bmPop();renderBM()});
 const ldE=document.createElement("div");ldE.id="ld";ldE.hidden=true;ldE.setAttribute("aria-hidden","true");
 ldE.innerHTML='<div class="pg"></div><div class="lg"><div class="lw"><div class="lr"></div><div class="lb"></div></div><div class="ln"></div><div class="ls"></div></div>';document.body.append(ldE);
@@ -727,7 +776,7 @@ let ldT=0,ldO=null,ldP=null;
 function ldShow(a){const fd=matchMedia("(prefers-reduced-motion: reduce)").matches||s.ld=="fade",u=a.href,n=(a.title||(a.querySelector("span")||a).textContent||"").trim(),r=a.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2,D=Math.max(1,+s.ldd||2.5)*1000;
  let host="",k=0;try{host=new URL(u).hostname.replace(/^www\./,"")}catch(e){}for(const c of host)k=(k*31+c.charCodeAt(0))%360;
  ldE.style.setProperty("--lh",k);ldE.style.setProperty("--ldd",D+"ms");ldO={cx,cy};
- const lb=ldE.querySelector(".lb");lb.textContent=(n[0]||host[0]||"?").toUpperCase();lb.style.background=`hsl(${k} 55% 42%)`;
+ const lb=ldE.querySelector(".lb");lb.textContent=(n[0]||host[0]||"?").toUpperCase();lb.style.background=`hsl(${k} 55% 42%)`;const gb=a.querySelector("b[data-g]");if(gb){lb.textContent="";lb.innerHTML=gb.innerHTML;lb.style.background=gb.style.background;lb.style.color="#fff"}
  if(window.chrome&&chrome.runtime&&chrome.runtime.id){const im=new Image();im.alt="";im.src=chrome.runtime.getURL("/_favicon/")+"?pageUrl="+encodeURIComponent(u)+"&size=64";im.onload=()=>{lb.textContent="";lb.style.background="rgba(255,255,255,.95)";lb.append(im)}}
  ldE.querySelector(".ln").textContent=n||host;ldE.querySelector(".ls").textContent=host;
  ldE.className=fd?"fade":"";ldE.classList.remove("show");ldE.style.transition="none";ldE.style.clipPath=fd?"":`circle(0px at ${cx}px ${cy}px)`;ldE.hidden=false;ldE.getBoundingClientRect();
@@ -739,7 +788,7 @@ function ldShow(a){const fd=matchMedia("(prefers-reduced-motion: reduce)").match
  ldT=setTimeout(async()=>{try{const t=await ldP;if(t){await chrome.tabs.update(t.id,{active:true});const c=await chrome.tabs.getCurrent();if(c)chrome.tabs.remove(c.id);return}}catch(e){}location.href=u},D)}
 function ldCancel(){if(ldE.hidden)return;clearTimeout(ldT);if(ldP){ldP.then(t=>t&&chrome.tabs.remove(t.id)).catch(()=>{});ldP=null}ldHide()}
 function ldHide(){if(ldE.hidden)return;clearTimeout(ldT);ldE.classList.remove("show","on");if(!ldE.classList.contains("fade")&&ldO)ldE.style.clipPath=`circle(0px at ${ldO.cx}px ${ldO.cy}px)`;setTimeout(()=>{if(!ldE.classList.contains("on"))ldE.hidden=true},580)}
-document.addEventListener("click",e=>{const a=e.target.closest("#lk a,#bmg a");if(!a||s.ld=="off"||e.button||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey||editing())return;e.preventDefault();ldShow(a)},true);
+document.addEventListener("click",e=>{const a=e.target.closest("#lk a,#bmg a,#gwg a");if(!a||s.ld=="off"||e.button||e.ctrlKey||e.metaKey||e.shiftKey||e.altKey||editing())return;e.preventDefault();ldShow(a)},true);
 addEventListener("pageshow",e=>{if(e.persisted)ldHide()});
 addEventListener("keydown",e=>{if(e.key=="Escape")ldCancel()});
 const WK=["dim","br","sa","wb","fit","ox","oy","vg","tint","kb","px","vs","snd"],snap=()=>{const o={};WK.forEach(k=>o[k]=s[k]);return o};
@@ -756,6 +805,68 @@ $("#wpa").onclick=()=>{s.wd=snap();s.wp={};save();wpLabel();toast("These setting
 tx("readonly",st=>st.getAll()).then(a=>{(a||[]).forEach(m=>wnc[m.id]=m.name);wpLabel()});
 function sslUI(){$("#sslb").textContent=s.ssl&&s.ssl.length?s.ssl.length+" selected":"All wallpapers"}
 $("#sslb").onclick=()=>libOpen("slide");sslUI();
+const ZK=[["clock","Clock","#clock"],["d","Date","#d"],["gr","Greeting","#gr"],["sf","Search bar","#sf"],["lk","Shortcuts","#lk"],["nw","Notes","#nw"],["tw","To-do","#tw"],["wx","Weather","#wx"],["pm","Timer","#pm"],["cal","Calendar","#cal"],["cd","Countdown","#cd"],["qt","Quote","#qt"],["bm","Bookmarks","#bm"],["gw","Google apps","#gw"],["aw","Audio players",".aw"],["vz","Visualizers",".vz"],["gear","Settings button","#gear"]];
+const zst=document.createElement("style");zst.id="zs";
+zst.textContent=ZK.map(([k,,q])=>`body.zen[data-zh~="${k}"] ${q}{opacity:0;transition:opacity .35s}body.zen[data-zh~="${k}"]:not(.peek):not(.edit):not(.typing) ${q}{pointer-events:none}body.zen.peek[data-zh~="${k}"] ${q},body.zen.edit[data-zh~="${k}"] ${q}{opacity:1}`).join("")+'body.zen.typing[data-zh~="sf"] #sf{opacity:1}';document.head.append(zst);
+ZK.forEach(([k,l])=>{const b=document.createElement("label");b.className="chip";const x=document.createElement("input");x.type="checkbox";x.checked=s.zl.includes(k);x.onchange=()=>{s.zl=x.checked?[...new Set([...s.zl,k])]:s.zl.filter(y=>y!=k);save();apply()};b.append(x,l);$("#zlb").append(b)});
+const qin=$("#q"),typ=()=>bd.classList.toggle("typing",document.activeElement===qin||!!qin.value);["focus","blur","input"].forEach(v=>qin.addEventListener(v,typ));
+let gft;const gfn=v=>(v||"").trim().replace(/[^\w \-]/g,"");
+function gfLoad(id,name){let l=document.getElementById(id);if(!name){if(l)l.remove();return}if(l&&l.dataset.n===name)return;
+ const href=u=>"https://fonts.googleapis.com/css2?family="+name.replace(/ /g,"+")+u+"&display=swap";
+ if(!l){l=document.createElement("link");l.id=id;l.rel="stylesheet";document.head.append(l)}l.dataset.n=name;l.onerror=()=>{l.onerror=null;l.href=href("")};l.href=href(":wght@100;300;400;500;600;700;800;900")}
+$("#bmh").onclick=()=>{const e=$("#bm"),o=!e.classList.contains("open");e.classList.toggle("down",e.getBoundingClientRect().top<innerHeight/2);e.classList.toggle("open",o);if(o)setTimeout(()=>$("#bms2").focus(),30)};
+$("#bms2").oninput=e=>{bmQ=e.target.value;renderBM()};
+document.addEventListener("pointerdown",e=>{if(!(e.target.closest&&e.target.closest("#bm")))$("#bm").classList.remove("open")});
+addEventListener("keydown",e=>{if(e.key=="Escape")$("#bm").classList.remove("open")});
+const dl=(blob,name)=>{const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),6e4)};
+async function exFull(){toast("Preparing backup…");const items=(await tx("readonly",st=>st.getAll()))||[],
+ meta={v:1,th:localStorage.getItem("nt-th")||"",s:JSON.parse(JSON.stringify(s)),items:items.map(m=>({id:m.id,name:m.name,type:m.blob.type,size:m.blob.size,poster:m.poster||""}))},
+ head=new TextEncoder().encode(JSON.stringify(meta)),len=new Uint8Array(4);new DataView(len.buffer).setUint32(0,head.length);
+ dl(new Blob([new TextEncoder().encode("NTBK1"),len,head,...items.map(m=>m.blob)]),"custom-newtab-backup-"+new Date().toISOString().slice(0,10)+".ntbk");toast("Backup saved ("+items.length+" wallpapers)")}
+async function imFull(file){try{const hb=new Uint8Array(await file.slice(0,9).arrayBuffer());if(new TextDecoder().decode(hb.slice(0,5))!="NTBK1")throw 0;
+ const hl=new DataView(hb.buffer).getUint32(5),meta=JSON.parse(new TextDecoder().decode(await file.slice(9,9+hl).arrayBuffer()));
+ if(!confirm("Restore this backup? Your current settings will be replaced and "+meta.items.length+" wallpapers added."))return;
+ let off=9+hl;for(const it of meta.items){const blob=file.slice(off,off+it.size,it.type);off+=it.size;await tx("readwrite",st=>st.put({id:it.id,name:it.name,blob,poster:it.poster}))}
+ try{localStorage.setItem("nt-th",meta.th||"")}catch(e){}s={...D,...meta.s};save();toast("Backup restored. Reloading…");setTimeout(()=>location.reload(),700)}catch(e){toast("That isn't a valid backup file")}}
+$("#exf").onclick=exFull;$("#imf2b").onclick=()=>$("#imf2").click();$("#imf2").onchange=e=>{const f=e.target.files[0];e.target.value="";if(f)imFull(f)};
+async function bkInfo(){const a=(await tx("readonly",st=>st.getAll()))||[],mb=a.reduce((c,m)=>c+m.blob.size,0)/1048576;$("#bkn").textContent="Full backup includes settings, scenes, notes, to-dos and "+a.length+" uploaded wallpaper"+(a.length==1?"":"s")+" ("+mb.toFixed(1)+" MB)."}
+const g0=gallery;gallery=async function(){await g0();bkInfo()};bkInfo();
+const WAFFLE='<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true" style="vertical-align:-3px;margin-right:6px">'+[5,12,19].flatMap(y=>[5,12,19].map(x=>`<circle cx="${x}" cy="${y}" r="1.8"/>`)).join("")+'</svg>';
+const GA=[["gmail","Gmail","https://mail.google.com/","#ea4335",'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>'],
+["drive","Drive","https://drive.google.com/","#1fa463",'<path d="M12 4l8 14H4z"/><path d="M8 18l4-7 4 7"/>'],
+["docs","Docs","https://docs.google.com/document/","#4285f4",'<path d="M6 3h8l4 4v14H6z"/><path d="M9 12h6M9 16h6"/>'],
+["sheets","Sheets","https://docs.google.com/spreadsheets/","#0f9d58",'<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M4 15h16M10 4v16"/>'],
+["slides","Slides","https://docs.google.com/presentation/","#f4b400",'<rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/>'],
+["forms","Forms","https://docs.google.com/forms/","#7e57c2",'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 9l1.5 1.5L12 8M8 15h8"/>'],
+["classroom","Classroom","https://classroom.google.com/","#1e8e3e",'<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 3 9 3 12 0v-5"/>'],
+["meet","Meet","https://meet.google.com/","#00897b",'<rect x="3" y="6" width="12" height="12" rx="2"/><path d="M15 10l6-3v10l-6-3z"/>'],
+["calendar","Calendar","https://calendar.google.com/","#4285f4",'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'],
+["photos","Photos","https://photos.google.com/","#e8710a",'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 17l-6-6-9 9"/>'],
+["maps","Maps","https://maps.google.com/","#34a853",'<path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>'],
+["youtube","YouTube","https://www.youtube.com/","#e62117",'<rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/>'],
+["translate","Translate","https://translate.google.com/","#4285f4",'<path d="M4 5h9M8.5 3v2M6 5c.5 4 3 7 6 8M12 5c-.5 4-3 7-7 9"/><path d="M12 21l4-10 4 10M13.5 18h5"/>'],
+["keep","Keep","https://keep.google.com/","#f9ab00",'<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 00-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0012 3z"/>'],
+["contacts","Contacts","https://contacts.google.com/","#1a73e8",'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>'],
+["chat","Chat","https://chat.google.com/","#00ac47",'<path d="M4 5h16v11H9l-5 4z"/>'],
+["gemini","Gemini","https://gemini.google.com/","#6c5ce7",'<path d="M12 3c1 5 4 8 9 9-5 1-8 4-9 9-1-5-4-8-9-9 5-1 8-4 9-9z"/>'],
+["sites","Sites","https://sites.google.com/","#3367d6",'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/>'],
+["earth","Earth","https://earth.google.com/web/","#1b8a5a",'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'],
+["news","News","https://news.google.com/","#5f6368",'<path d="M5 4h12v16H7a2 2 0 01-2-2z"/><path d="M17 8h3v10a2 2 0 01-2 2M8 8h6M8 12h6M8 16h4"/>'],
+["scholar","Scholar","https://scholar.google.com/","#4a6ee0",'<path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6v14"/>'],
+["play","Play Store","https://play.google.com/","#01875f",'<path d="M5 3l14 9-14 9z"/>'],
+["search","Search","https://www.google.com/","#4285f4",'<circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/>'],
+["colab","Colab","https://colab.research.google.com/","#f9ab00",'<path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/>']];
+const gUrl=u=>{if(!(+s.gwa>0))return u;try{const U=new URL(u);U.searchParams.set("authuser",+s.gwa);return U.href}catch(e){return u}};
+function renderGW(){if(!s.sGw)return;const e=$("#gw"),dd=s.gwd!="open",g=$("#gwg");
+ e.dataset.d=dd?"dd":"open";e.classList.toggle("nolbl",!s.gwn);if(!dd)e.classList.remove("open");e.style.setProperty("--gws",s.gws+"px");e.style.setProperty("--gwc",s.gwc);g.innerHTML="";
+ GA.filter(a=>s.gwl.includes(a[0])).forEach(([k,n,u,c,p])=>{const a=document.createElement("a");a.href=gUrl(u);a.title=n;
+  const b=document.createElement("b");b.dataset.g=k;b.style.background=c;b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>';
+  const t=document.createElement("span");t.textContent=n;a.append(b,t);g.append(a)});
+ if(!g.children.length)g.textContent="Pick some apps in Settings";$("#gwh").innerHTML=WAFFLE+"Google apps ▾"}
+GA.forEach(([k,n])=>{const b=document.createElement("label");b.className="chip";const x=document.createElement("input");x.type="checkbox";x.checked=s.gwl.includes(k);x.onchange=()=>{s.gwl=x.checked?GA.map(a=>a[0]).filter(y=>y==k||s.gwl.includes(y)):s.gwl.filter(y=>y!=k);save();renderGW()};b.append(x,n);$("#gwl").append(b)});
+$("#gwh").onclick=()=>{const e=$("#gw"),o=!e.classList.contains("open");e.classList.toggle("down",e.getBoundingClientRect().top<innerHeight/2);e.classList.toggle("open",o)};
+document.addEventListener("pointerdown",e=>{if(!(e.target.closest&&e.target.closest("#gw")))$("#gw").classList.remove("open")});
+addEventListener("keydown",e=>{if(e.key=="Escape")$("#gw").classList.remove("open")});
 apply();links();s.ss=="tab"&&!s.dn?rnd():(dnc(1),bg());setInterval(tick,1000);setInterval(dnc,6e4);scn();
 </script>
 </body></html>

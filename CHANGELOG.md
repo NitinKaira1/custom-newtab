@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.10.0
+- Glass tint color and tint strength (colors the glass cards, search bar and dropdown buttons); themes set a matching tint.
+- Google apps widget: a launcher for Gmail, Drive, Docs, Sheets, Slides, Forms, Classroom, Meet, Calendar, Photos, Maps, YouTube and more (24 apps), as a dropdown or always open, with icon size, columns and Google account number.
+
+## 2.9.0
+- Zen mode: choose exactly what hides (clock, date, greeting, search, shortcuts, widgets, bookmarks, audio, visualizers, settings button). The search bar stays visible while you type, and `/` focuses it.
+- Google Fonts: type any family name for all text and/or the clock.
+- Bookmarks widget is now a space-saving dropdown (with search) by default; "Always open" is still available.
+- Full backup: export/import settings plus uploaded wallpapers in one `.ntbk` file.
+
 ## 2.8.0
 - Each wallpaper remembers its own dim, brightness, saturation, blur, fit, focus, vignette, tint and video settings ("Save per wallpaper").
 - Choose which wallpapers take part in the slideshow; shuffle or in-order playback.

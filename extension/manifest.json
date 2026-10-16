@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Custom New Tab",
-  "version": "2.8.0",
+  "version": "2.10.0",
   "description": "Fast, customizable new tab with video wallpapers, widgets and scenes.",
   "minimum_chrome_version": "102",
   "chrome_url_overrides": {

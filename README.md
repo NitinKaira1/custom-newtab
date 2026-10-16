@@ -4,22 +4,34 @@ A fast, private and fully customizable new-tab page for Brave, Chrome and Edge.
 Video and image wallpapers, draggable widgets, a now-playing audio widget, a real sound-reactive visualizer,
 bookmarks dock, scenes, themes and more. No account, no tracking, no heavy framework (about 100 KB).
 
-
+> Replace `YOUR-USERNAME` / `YOUR-REPO` below after you create the repository.
 
 ## Features
 
 | Area | What you get |
 |---|---|
 | Wallpapers | Upload your own image / GIF / video (looping), built-in library window with live hover preview, slideshow with your chosen wallpapers, per-wallpaper brightness/dim/blur settings, day/night auto-switch, vignette, focus point, parallax |
-| Widgets | Clock (digital + analog), date, greeting, search, shortcuts, notes, to-do, weather, focus timer, calendar, countdown, daily quote, bookmarks |
+| Widgets | Clock (digital + analog), date, greeting, search, shortcuts, notes, to-do, weather, focus timer, calendar, countdown, daily quote, bookmarks, Google apps launcher |
 | Audio | Now-playing players (bar, pill, circle, card, mini) for any tab playing audio; visualizer (bars, mirror, dots, wave, radial) that reacts to real sound |
-| Layout | Drag, resize and rotate any widget; snap to grid; zen mode; presets (Minimal / Balanced / Full) |
-| Look | Themes, frosted / glossy / clear / OLED-black glass, accent color, fonts, custom CSS |
-| Productivity | Command palette (`Ctrl+K`), bang search (`!yt`, `!gh`, `!w`, `!g`, `!r`), scenes (save whole looks), export / import |
+| Layout | Drag, resize and rotate any widget; snap to grid; zen mode with a list of what hides; presets (Minimal / Balanced / Full) |
+| Look | Themes, frosted / glossy / clear / OLED-black glass with adjustable tint, accent color, built-in fonts or any Google Font, custom CSS |
+| Productivity | Command palette (`Ctrl+K`), bang search (`!yt`, `!gh`, `!w`, `!g`, `!r`), scenes (save whole looks), full backup with wallpapers |
 | Open animation | Screen-fill loader with the site logo when you open a shortcut or bookmark |
 | Performance | Instant first paint, Lite mode (no blur, still wallpaper), video pauses when the tab is hidden |
 
-## What's new in v2.8
+## What's new in v2.10
+
+- **Glass tint**: color the glass cards and search bar (Settings > Look > Glass tint color / Tint strength).
+- **Google apps widget**: Gmail, Drive, Classroom, Docs, Meet and more in a dropdown or grid, separate from your normal shortcuts.
+
+v2.9 highlights:
+
+- **Zen mode you control**: pick what hides (even the clock). The search bar stays while you type; press `/` to search.
+- **Google Fonts**: use any font name for all text or only the clock.
+- **Bookmarks dropdown**: a small button that opens a searchable list, so many bookmarks no longer take space.
+- **Full backup**: settings and uploaded wallpapers in one file.
+
+Earlier highlights:
 
 - **Per-wallpaper settings**: every wallpaper remembers its own dim, brightness, blur and other adjustments, so slideshows always look right.
 - **Pick your slideshow wallpapers** (and choose shuffle or in-order).
@@ -30,7 +42,7 @@ Full history in [CHANGELOG.md](CHANGELOG.md).
 
 ## Install (Brave / Chrome / Edge)
 
-1. Go to the [Releases page](https://github.com/NitinKaira1/custom-newtab/releases) and download `custom-newtab-extension.zip`
+1. Go to the [Releases page](https://github.com/YOUR-USERNAME/YOUR-REPO/releases) and download `custom-newtab-extension.zip`
    (or click **Code > Download ZIP** and use the `extension` folder).
 2. Extract the zip to a folder you will keep (do not delete it later, the extension runs from there).
 3. Open `brave://extensions` (Chrome: `chrome://extensions`, Edge: `edge://extensions`).
@@ -72,6 +84,24 @@ You can also try right-clicking the bar and choosing **Hide footer on New Tab pa
 - **Wallpapers > Adjust > Save per wallpaper** (on by default): each wallpaper keeps its own dim, brightness, saturation, blur, fit, focus,
   vignette, tint and video settings. Adjust a wallpaper once and it looks the same every time the slideshow shows it.
   *Reset this wallpaper* returns it to the defaults; *Use for all* makes the current look the default for every wallpaper.
+
+## Zen mode, fonts and backups
+
+- **Zen mode** (`Z`): **Widgets > Arrange > Choose what zen mode hides** lets you tick every part that disappears (clock, date, greeting,
+  search, shortcuts, notes, to-do, weather, timer, calendar, countdown, quote, bookmarks, audio players, visualizers, settings button).
+  Move the mouse to peek. Press `/` to search; the search bar stays visible while you type.
+- **Google Fonts**: **Settings > Look > Google font** takes any family name from [fonts.google.com](https://fonts.google.com)
+  (for example `Poppins` or `Orbitron`), separately for all text and for the clock. Needs internet; leave empty for the built-in fonts.
+- **Bookmarks**: **Widgets > Bookmarks > Show as** is *Dropdown* (a small button that opens a searchable list) or *Always open*.
+- **Backup** (**Settings > Backup**): *Settings only* is a small `.json` file. *Full backup* creates one `.ntbk` file with your settings, scenes,
+  notes, to-dos, per-wallpaper settings **and your uploaded wallpapers**. Import it on any computer to restore everything.
+
+## Google apps widget
+
+**Widgets > Show > Google apps** adds a small button that opens a launcher with up to 24 Google apps (Gmail, Drive, Docs, Sheets, Slides, Forms,
+Classroom, Meet, Calendar, Photos, Maps, YouTube, Translate, Keep, Contacts, Chat, Gemini, Sites, Earth, News, Scholar, Play Store, Search, Colab).
+In **Widgets > Google apps** you can choose which apps appear, the icon size, columns, dropdown or always open, and the **account number**
+(0 = first signed-in Google account, 1 = second, and so on). `Ctrl+K` also finds these apps by name. The icons are simple built-in glyphs, not Google logos.
 
 ## Keyboard shortcuts
 
@@ -119,18 +149,18 @@ Nothing is sent to the author. See [PRIVACY.md](PRIVACY.md).
 ## Web version (no install)
 
 A single-file web version lives in `docs/index.html` and can be hosted with GitHub Pages:
-[https://NitinKaira1.github.io/custom-newtab/](https://NitinKaira1.github.io/custom-newtab/).
+[https://YOUR-USERNAME.github.io/YOUR-REPO/](https://YOUR-USERNAME.github.io/YOUR-REPO/).
 Wallpapers, widgets, scenes and themes work. Audio widgets, tab audio, the bookmarks widget (it shows demo bookmarks), real weather
 and the background-tab open animation need the extension.
 
 ## Updating
 
 The version you have is shown on the extension card in `brave://extensions`. The newest version is on the
-[Releases page](https://github.com/NitinKaira1/custom-newtab/releases).
+[Releases page](https://github.com/YOUR-USERNAME/YOUR-REPO/releases).
 
 **Installed from a zip**
 
-1. Optional safety copy: open the settings (gear) > **Settings** tab > **Backup > Export**.
+1. Optional safety copy: open the settings (gear) > **Settings** tab > **Backup > Full backup > Export** (includes your wallpapers).
 2. Download the new `custom-newtab-extension.zip` from the Releases page.
 3. Extract it into the **same folder** as before and choose **Replace the files** when asked.
 4. Open `brave://extensions`, click the **reload** icon on the extension card, then open a new tab.
@@ -139,7 +169,7 @@ The version you have is shown on the extension card in `brave://extensions`. The
 
 **Keep the folder in the same place.** The browser links an unpacked extension's saved data (settings and uploaded wallpapers)
 to the folder it was loaded from. Loading it from a different folder starts fresh, so if you must move it, export your settings first
-and import them after. Uploaded wallpapers are not part of the export and need to be added again.
+and import them after. Use **Full backup** if you also want your uploaded wallpapers to come along (the settings-only export does not include them).
 
 ## Troubleshooting
 

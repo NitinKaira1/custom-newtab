@@ -21,7 +21,8 @@
 <section id="wx" class="wg" data-w="wx" hidden></section>
 <section id="pm" class="wg" data-w="pm" hidden><div id="pt">25:00</div><div class="pr"><button class="btn" id="pg">Start</button><button class="btn" data-pm="25">Focus</button><button class="btn" data-pm="5">Break</button></div></section>
 <section id="cal" class="wg" data-w="cal" hidden></section>
-<section id="bm" class="wg" data-w="bm" hidden><div class="bt" id="bmt"></div><div id="bmg"></div></section>
+<section id="bm" class="wg" data-w="bm" hidden><button id="bmh" type="button"></button><div id="bmp"><div class="bt" id="bmt"></div><input id="bms2" type="text" placeholder="Search bookmarks" aria-label="Search bookmarks"><div id="bmg"></div></div></section>
+<section id="gw" class="wg" data-w="gw" hidden><button id="gwh" type="button"></button><div id="gwp"><div id="gwg"></div></div></section>
 <div id="lib" class="win" hidden role="dialog" aria-label="Wallpaper library"><div id="lh"><b id="lt">Wallpaper library</b><button class="btn" id="lc" aria-label="Close">✕</button></div><div class="ch" id="lf"></div><div id="lg"></div></div>
 <button id="gear" aria-label="Customize">⚙</button>
 <aside id="pn" aria-label="Settings">
@@ -79,6 +80,7 @@
   <div class="r">Countdown<input type="checkbox" data-k="sCd"></div>
   <div class="r">Daily quote<input type="checkbox" data-k="sQt"></div>
   <div class="r">Bookmarks<input type="checkbox" data-k="sBm"></div>
+  <div class="r">Google apps<input type="checkbox" data-k="sGw"></div>
   <h3>Audio players</h3>
   <p class="note">Shows what's playing in your other tabs (extension). The preview uses a demo track.</p>
   <div id="awl"></div><button class="btn big" id="awa">+ Add audio widget</button>
@@ -88,16 +90,25 @@
   <div id="vzl"></div><button class="btn big" id="vza">+ Add visualizer bars</button>
   <h3>Bookmarks</h3>
   <div class="r">Folder<select id="bmf"></select></div>
+  <div class="r">Show as<select data-k="bmd"><option value="dd">Dropdown (saves space)</option><option value="open">Always open</option></select></div>
   <div class="r">Layout<select data-k="bml"><option value="grid">Grid</option><option value="dock">Dock</option><option value="list">List</option></select></div>
   <div class="r">Icon size<input type="range" data-k="bms" min="36" max="96" step="2"></div>
   <div class="r">Width<input type="range" data-k="bmw" min="280" max="900" step="10"></div>
   <div class="r">Show names<input type="checkbox" data-k="bmn"></div>
   <div class="r">Folder tabs<input type="checkbox" data-k="bmt"></div>
+  <h3>Google apps</h3>
+  <div class="r">Show as<select data-k="gwd"><option value="dd">Dropdown (saves space)</option><option value="open">Always open</option></select></div>
+  <div class="r">Icon size<input type="range" data-k="gws" min="36" max="80" step="2"></div>
+  <div class="r">Columns<input type="range" data-k="gwc" min="3" max="6" step="1"></div>
+  <div class="r">Show names<input type="checkbox" data-k="gwn"></div>
+  <div class="r">Account number (0 = first)<input type="number" data-k="gwa" min="0" max="9" style="width:64px"></div>
+  <details class="zl"><summary>Choose which apps to show</summary><div class="ch" id="gwl"></div></details>
   <h3>Arrange</h3>
   <div class="r">Vertical align<select data-k="va"><option value="start">Top</option><option value="center">Center</option><option value="end">Bottom</option></select></div>
   <div class="r">Spacing<input type="range" data-k="gap" min="0" max="48" step="2"></div>
   <div class="r">Snap to grid<input type="checkbox" data-k="snap"></div>
   <div class="r">Zen mode (press Z)<input type="checkbox" data-k="zen"></div>
+  <details class="zl"><summary>Choose what zen mode hides</summary><div class="ch" id="zlb"></div></details>
   <h3>Clock</h3>
   <div class="r">Your name<input type="text" data-k="name" placeholder="optional"></div>
   <div class="r">Size<input type="range" data-k="cs" min="40" max="220" step="2"></div>
@@ -124,12 +135,18 @@
   <h3>Look</h3><div class="ch" id="thm"></div>
   <div class="r">Glass style<select data-k="gs"><option value="frost">Frosted</option><option value="gloss">Glossy</option><option value="clear">Clear</option><option value="oled">OLED black</option></select></div>
   <div class="r">Glass opacity<input type="range" data-k="go" min="0" max=".4" step=".01"></div>
+  <div class="r">Glass tint color<input type="color" data-k="gt"></div>
+  <div class="r">Tint strength<input type="range" data-k="gts" min="0" max=".6" step=".02"></div>
   <div class="r">Lite mode (no blur, still video)<input type="checkbox" data-k="lite"></div>
   <div class="r">Corner radius<input type="range" data-k="rad" min="0" max="32" step="1"></div>
   <div class="r">Text color<input type="color" data-k="tc"></div>
   <div class="r">Text shadow<input type="range" data-k="sh" min="0" max="1" step=".05"></div>
   <div class="r">Accent<input type="color" data-k="ac"></div>
   <div class="r">Font<select data-k="font"><option value="sans">Clean</option><option value="serif">Serif</option><option value="mono">Mono</option><option value="round">Rounded</option></select></div>
+  <div class="r">Google font (all text)<input type="text" data-k="gf" list="gfl" placeholder="e.g. Poppins"></div>
+  <div class="r">Google font (clock)<input type="text" data-k="gfc" list="gfl" placeholder="e.g. Orbitron"></div>
+  <p class="note">Type any family name from <a href="https://fonts.google.com" target="_blank" rel="noopener" style="color:inherit">fonts.google.com</a>. Needs internet. Leave empty to use the built-in fonts.</p>
+  <datalist id="gfl"><option value="Poppins"><option value="Inter"><option value="Montserrat"><option value="Playfair Display"><option value="Orbitron"><option value="Bebas Neue"><option value="Space Grotesk"><option value="JetBrains Mono"><option value="Pacifico"><option value="Oswald"><option value="Raleway"><option value="Lobster"><option value="Rajdhani"><option value="Quicksand"></datalist>
   <div class="r">Glass blur<input type="range" data-k="blur" min="0" max="30" step="1"></div>
   <div class="r">Panel theme<select id="th"><option value="">System</option><option value="dark">Dark</option><option value="light">Light</option></select></div>
   <h3>Search &amp; text</h3>
@@ -141,9 +158,13 @@
   <div class="r">Search engine<select data-k="eng"><option value="https://duckduckgo.com/?q=">DuckDuckGo</option><option value="https://search.brave.com/search?q=">Brave</option><option value="https://www.google.com/search?q=">Google</option><option value="https://www.bing.com/search?q=">Bing</option></select></div>
   <h3>Custom CSS</h3>
   <textarea data-k="css" spellcheck="false" placeholder="#clock{font-weight:200}"></textarea>
-  <h3>Backup</h3><div class="pr"><button class="btn" id="ex">Export</button><button class="btn" id="im">Import</button></div><input id="imf" type="file" accept=".json" hidden>
+  <h3>Backup</h3>
+  <p class="note" id="bkn"></p>
+  <div class="r">Settings only<span class="pr" style="flex:none"><button class="btn" id="ex">Export</button><button class="btn" id="im">Import</button></span></div>
+  <div class="r">Full backup (with wallpapers)<span class="pr" style="flex:none"><button class="btn" id="exf">Export</button><button class="btn" id="imf2b">Import</button></span></div>
+  <input id="imf" type="file" accept=".json" hidden><input id="imf2" type="file" accept=".ntbk" hidden>
   <h3>Reset</h3><button class="btn" id="rs">Reset all settings</button>
  </section>
-<p class="hint">v2.8 · Ctrl+K commands · / search · Esc close</p></aside>
+<p class="hint">v2.10 · Ctrl+K commands · / search · Esc close</p></aside>
 <script src="app.js"></script>
 </body></html>
